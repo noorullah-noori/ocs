@@ -2,7 +2,7 @@
 @section('title',trans('menu.ocs'))
 @section('content')
 
-  <form class="ui form" method="post" action="{{url($lang.'/get_search')}}">
+  <form class="ui form" method="GET" action="{{url($lang.'/get_search')}}">
       <div class="field">
           <div class="field">
           <label>{{trans('search.search')}}*</label>
@@ -65,6 +65,7 @@
     <div class="field">
       <div class="ui checkbox">
         <input type="checkbox" name="search_in[]" checked="checked" value="domestic">
+        <input type="checkbox" name="search_in[]" style="display: none" checked="checked" value="international">
         <label>{{trans('menu.trips')}}</label>
       </div>
     </div>

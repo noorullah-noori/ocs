@@ -63,7 +63,7 @@
         margin: auto;
       }
      .middle-bar {
-        min-height:78vh;
+        /* min-height:65vh; */
         position: relative;
         background:url('{{($quotes!=null)?asset('uploads/quotes/'.$quotes->image):asset('assets/img/president.jpg')}}');
         background-repeat: no-repeat;
@@ -90,38 +90,51 @@
         height: 10vh;
         background-color:#111;
       }
-      @media (max-width:1439px) and (min-width:951px) {
-        .middle-bar {
-          box-shadow: inset 0 -90px 56px -48px rgba(0,0,0,0.75);
-          min-height: 70vh !important;
-        }
+      
+      @media(min-width:950px) {
+          .middle-bar {
+            box-shadow: inset 0 -90px 56px -48px rgba(0,0,0,0.75);
+            min-height: 70vh !important;
+          }
        /* body{
           overflow: hidden;
           height: 100%;
         }
 */      }
-      @media (max-width:950px) and (min-width:768px) {
+        
+        @media (max-width:950px) {
+          .middle-bar {
+              min-height:50vh !important;
+          }
+
+        }
+
+  
+      /* @media (max-width:950px) and (min-width:768px) {
         .middle-bar {
           min-height:50vh !important;
         }
-      }
+      } */
+
       @media (max-width:768px) {
         h1.ui.header {
           font-size:1.2em;
         }
       }
+
       @media (max-width:767px) and (min-width:425px) {
-        .middle-bar {
+        /* .middle-bar {
           min-height: 50vh !important;
-        }
+        } */
         h2.ui.header {
           font-size: 18px !important;
         }
       }
+      
       @media (max-width:424px) and (min-width:375px) {
-        .middle-bar {
-          min-height: 25vh !important;
-        }
+        /* .middle-bar {
+          min-height: 35vh !important;
+        } */
         h2.ui.header {
           font-size: 16px !important;
         }
@@ -130,9 +143,9 @@
         }
       }
       @media (max-width:374px) {
-        .middle-bar {
-          min-height: 22vh !important;
-        }
+        /* .middle-bar {
+          min-height: 32vh !important;
+        } */
         h2.ui.header {
           font-size: 10px !important;
           white-space: nowrap;
@@ -144,7 +157,7 @@
           font-size: 0.85em !important;
         }
         .top-bar-box img{
-          height: 55px;
+          height: 40px;
         }
       }
       .ui.header{

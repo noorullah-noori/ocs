@@ -65,35 +65,35 @@ use App\Search;
 
 {{-- lower footer starts --}}
 <div class="ui segment not-printable" style="margin-top:0;">
-  <div class="ui equal width centered container grid" id="footer_content">
-    <div class="sixteen wide tablet mobile five wide computer column" style="text-align:{{$indir}}">
-		<a href="http://prev.ocs.gov.af" target="_blank" style="color:blue;">{{trans('home.old_website')}}</a></div>
-    <div class="sixteen wide tablet mobile five wide computer column" style="">
-      <p style="margin-left:auto;margin-right:auto;text-align:center; white-space: nowrap;">Office of Chief Of Staff for the President<i class="copyright icon"></i> All Rights Reserved</p>
-    </div>
-    <div class="sixteen wide tablet mobile six wide computer column">
-      <div class="ui centered grid" style="" id="footer_social_buttons">
-        <div class="column" style="direction:ltr !important;">
-          <a href="{{($lang=='en')?'https://www.facebook.com/AFG.OCS':'https://www.facebook.com/ocs.afg'}}" class="ui tiny circular basic icon button" id="footer_social_first_button">
-            <i class="icon facebook f"></i>
-          </a>
-          <a href="https://twitter.com/OCS_AFG" target="_blank" class="ui tiny circular basic icon button">
-            <i class="icon twitter"></i>
-          </a>
-          <a href="https://www.instagram.com/ocs.afg" target="_blank" class="ui tiny circular basic icon button">
-            <i class="icon instagram"></i>
-          </a>
-          <a href="https://www.youtube.com/channel/UCTwc5c4qoQC6uerwvPnUPzA" target="_blank" class="ui tiny circular basic icon button">
-            <i class="icon youtube"></i>
-          </a>
-          <a href="{{url($lang.'/feed')}}" target="_blank" class="ui tiny circular basic icon button">
-            <i class="icon rss"></i>
-          </a>
+    <div class="ui equal width centered container grid" id="footer_content">
+      <div class="sixteen wide tablet mobile four wide computer column" style="text-align:{{$indir}}">
+      <a href="http://prev.ocs.gov.af" target="_blank" style="color:blue;">{{trans('home.old_website')}}</a></div>
+      <div class="sixteen wide tablet mobile six wide computer column" style="">
+        <p style="margin-left:auto;margin-right:auto;text-align:center;direction:ltr"><i class="copyright icon"></i>Office of Chief Of Staff for the President. All Rights Reserved</p>
+      </div>
+      <div class="sixteen wide tablet mobile six wide computer column">
+        <div class="ui centered grid" style="" id="footer_social_buttons">
+          <div class="column" style="direction:ltr !important;">
+            <a href="{{($lang=='en')?'https://www.facebook.com/AFG.OCS':'https://www.facebook.com/ocs.afg'}}" class="ui tiny circular basic icon button" id="footer_social_first_button">
+              <i class="icon facebook f"></i>
+            </a>
+            <a href="https://twitter.com/OCS_AFG" target="_blank" class="ui tiny circular basic icon button">
+              <i class="icon twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/ocs.afg" target="_blank" class="ui tiny circular basic icon button">
+              <i class="icon instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UCTwc5c4qoQC6uerwvPnUPzA" target="_blank" class="ui tiny circular basic icon button">
+              <i class="icon youtube"></i>
+            </a>
+            <a href="{{url($lang.'/feed')}}" target="_blank" class="ui tiny circular basic icon button">
+              <i class="icon rss"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 @include('include.js_links')
   <script>
 
@@ -177,6 +177,7 @@ use App\Search;
       $('.news_image>img').css('width','100%');
     }
     if(width<768) {
+      $('.other_pages_thumbnail').removeClass().addClass('thumb_img')
       $('#footer_content').removeClass('container');
       // $('#main').removeClass('centered');
       $('#main').removeClass('container');

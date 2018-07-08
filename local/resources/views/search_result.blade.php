@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('title',trans('menu.ocs'))
+{{-- @section('search_title', 'نتایج جستجو برای کلمه') --}}
 @section('content')
 
   <div class="ui items" style="">
@@ -7,7 +8,7 @@
       @foreach($data as $value)
         <div class="item {{($value==$data->last())?'no_border':''}}">
           <div class="content">
-            <a href="{{url($lang.'/'.$value->type.'_details/'.$value->table_id)}}" class="ui small header title_font">{{$value->$title}}</a>
+            <a href="{{($value->type=='word')?'#':url($lang.'/'.$value->type.'_details/'.$value->table_id)}}" class="ui small header title_font">{{($value->type=='word')?trans('home.president_word'):$value->$title}}</a>
             <div class="meta body_font">
               {{$value->$date}}
               {{-- <span dir="">{{$jdate->detailedDate($value->date_en,$lang)}}</span> --}}
@@ -22,6 +23,11 @@
       <center><h2 style="">No match Found</h2></center>
     @endif
   </div>
+    {{-- Pagination start --}}
+      <div class="ui centered grid">
+        {{$data->links()}}
+      </div>
+    {{-- Pagination End --}}
 @endsection
 @push('custom-css')
   <style>

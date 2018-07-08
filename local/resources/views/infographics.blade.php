@@ -6,7 +6,7 @@
     $img_thumb = "image_thumb_".$lang;
   @endphp
   @if (sizeof($info)!=0)
-    <div class="ui three stackable cards" style="direction:{{$rtl}};">
+    <div class="ui three stackable cards infographics" style="direction:{{$rtl}};">
       @foreach($info as $value)
         @php
         if(sizeof($value->$title)==0)
@@ -24,16 +24,23 @@
         </div>
       @endforeach
     </div>
+     {{-- Pagination start --}}
+    <div class="ui centered grid">
+      {{$info->links('vendor.pagination.default')}}
+    </div>
+    {{-- Pagination End --}}
   @endif
 @endsection
 @push('custom-css')
   <style>
-    #bio img{
-      height: 100%;
-    }
-    #bio a{
-      height: 170px;
-    }
+   .infographics .ui.card a.image{
+        height: 170px !important;
+        overflow: hidden;
+        /*width: 100% !important;*/
+   }
+   .infographics .ui.card img{
+    height: 170px !important;
+   }
   </style>
 
 @endpush

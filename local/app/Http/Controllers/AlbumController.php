@@ -362,14 +362,13 @@ class AlbumController extends Controller
         return view('admin.edit_album_image')->with('image',$album_image);
     }
     public function update_album_image(Request $request , $id){
-
         // validation
-          $this->validate($request,[
-           'image'=>'mimes:jpg,jpej,png,bmp',
-          ]);
+        //   $this->validate($request,[
+        //    'image'=>'mimes:jpg,jpej,png,bmp',
+        //   ]);
 
         $album_image = AlbumImage::findOrFail($id);
-
+        
         $image = '';
         if($request->file('image')==null){
             $image = $album_image->image;

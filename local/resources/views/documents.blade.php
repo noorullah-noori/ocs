@@ -13,7 +13,7 @@
             <img src="{{asset('assets/img/pdf.png')}}" style="padding-left:8px;">
           </div>
           <div class="content">
-            <a href="{{url($documents_path.'/'.$item->$pdf)}}" class="ui small header title_font">{{$item->$title}}</a>
+            <a href="{{asset('uploads/'.$documents_path.'/'.$item->$pdf)}}" class="ui small header title_font">{{$item->$title}}</a>
             <div class="meta">
               <span class="body_font" dir="">{{$jdate->detailedDate($item->$date,$lang)}}</span>
             </div>

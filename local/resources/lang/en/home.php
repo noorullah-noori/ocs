@@ -22,7 +22,7 @@ return
 	'read_all'=>'View all',
 	'president_word'=>"President's Words",
 	'articles'=>'Articles',
-	'latest_news'=>'Latest Articles',
+	'latest_news'=>'Latest',
 	'reports_and_documents'=>'Reports and Documents',
 	'videos'=>'Videos',
 	'construction'=>'Coming soon',

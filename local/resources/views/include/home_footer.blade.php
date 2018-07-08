@@ -67,10 +67,10 @@ use App\Search;
 {{-- lower footer starts --}}
 <div class="ui segment not-printable" style="margin-top:0;">
   <div class="ui equal width centered container grid" id="footer_content">
-    <div class="sixteen wide tablet mobile five wide computer column" style="text-align:{{$indir}}">
+    <div class="sixteen wide tablet mobile four wide computer column" style="text-align:{{$indir}}">
 		<a href="http://prev.ocs.gov.af" target="_blank" style="color:blue;">{{trans('home.old_website')}}</a></div>
-    <div class="sixteen wide tablet mobile five wide computer column" style="">
-      <p style="margin-left:auto;margin-right:auto;text-align:center; white-space: nowrap;">Office of Chief Of Staff for the President<i class="copyright icon"></i> All Rights Reserved</p>
+    <div class="sixteen wide tablet mobile six wide computer column" style="">
+      <p style="margin-left:auto;margin-right:auto;text-align:center;direction:ltr"><i class="copyright icon"></i>Office of Chief Of Staff for the President. All Rights Reserved</p>
     </div>
     <div class="sixteen wide tablet mobile six wide computer column">
       <div class="ui centered grid" style="" id="footer_social_buttons">

@@ -6,7 +6,13 @@
         @if(sizeof($lattest_news)!=0)
         @foreach($lattest_news as $item)
           <?php 
-           $url =  ($item->table_name=='documents')?asset('uploads/documents_'.$lang.'/'.$item->table_id.'.pdf'):'';
+           $route = '';
+            if($item->table_name=='documents'){
+              $route = asset('uploads/documents_'.$lang.'/'.$item->table_id.'.pdf');
+            }
+            elseif($item->table_name=='album'){
+              $route = url($lang.'/'.$item->type.'_images/'.$item->table_id);
+            }
               // $img = '';
              if($item->table_name=='documents'){
                 $extension = \File::extension($item->image_thumb);
@@ -35,7 +41,7 @@
                 <img src="{{$img}}" style="padding-left:8px;">
               </div>
               <div class="content">
-                <a href="{{($item->table_name=='documents')?$url:url($lang.'/'.$item->type.'_details/'.$item->table_id)}}" class="ui small header title_font">{{$item->$title}}</a>
+                <a href="{{($item->table_name=='documents' || $item->table_name=='album')?$url:url($lang.'/'.$item->type.'_details/'.$item->table_id)}}" class="ui small header title_font">{{$item->$title}}</a>
                 <div class="meta">
                   <span dir="">{{$jdate->detailedDate($item->$date,$lang)}}</span>
                 </div>

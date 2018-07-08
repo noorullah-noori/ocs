@@ -147,7 +147,7 @@
 
          <div class="row"  style="display: none" id="type_text_id">
          <div class="field column">
-           <input type="text"  id="type_text" placeholder="Expertise in" name="type_text">
+           <input type="text"  id="type_text" placeholder="{{trans('subscription.area_of_expertise')}}" name="type_text">
          </div>
        </div>
 

@@ -3,6 +3,7 @@
 @section('content')
   @if ($statement->$title!=null)
     <p class="meta" style="font-weight: bold;font-size: 1.1em;">{{$jdate->detailedDate($statement->$date,$lang)}}</p>
+{{-- <img src="{{$statement->image_thumb}}"> --}}
     <div class="description">
       <p  class="printable">{!! $statement->$description !!}</p>
     </div>
@@ -30,7 +31,7 @@
     @endslot
 
     @slot('meta_image')
-      {{asset('uploads/decree/default_fb.jpg')}}
+      {{asset('uploads/statement/'.$statement->image_thumb)}}
     @endslot
 
   @endcomponent

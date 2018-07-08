@@ -57,6 +57,7 @@ return
         'news_reporter'=>'خبریال',
         'cartoonist'=>'کارټونیست',
         'official_social_media'=>'د دفتر برېښنايي ادرسونه (ویب سایټ او ټولنیزې شبکې)',
+        // 'expert_in' => '',
  
     'registeration_form_for_experts'=>'فورم ثبت کارشناس',
         'descipline'=>'تحصیلي څانګه',

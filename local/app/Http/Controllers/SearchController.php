@@ -25,15 +25,17 @@ class SearchController extends Controller
                             ->orWhere($description,'LIKE','%'.$text.'%')
                             ->whereIn('type',$type)
                             ->select($title,$short_desc,'table_id',$date,'type')
-                            ->get();
+                            ->orderBy('date_'.$lang,'desc')
+                            ->paginate(10);
 
         $words = DB::table('president')->where('type','word')->orderBy('id','desc')->first();
         $news = Search::take('5')->whereNotNull('title_'.$lang)->where('type','!=','word')->orderBy('date_'.$lang,'desc')->get();
-        return view('search_result')->with(['data'=>$data,'word'=>$words,'news'=>$news]);
+        return view('search_result')->with(['data'=>$data,'word'=>$words,'news'=>$news,'search_text'=>$text]);
     }
 
     public function get_search(Request $request){
        $search = $request->input('search');
+        
         $lang = Config::get('app.locale');
         
         $title = "title_".$lang;
@@ -44,11 +46,12 @@ class SearchController extends Controller
         $type = $request->input('type');
         $to = $request->input('to');
         $from = $request->input('from');
+
         $search_in = $request->input('search_in');
         $data = '';
-        if(in_array('domestic', $search_in)){
-            array_push($search_in, 'international');
-        }
+        // if(in_array('domestic', $search_in)){
+        //     array_push($search_in, 'international');
+        // }
         if($type =='all'){
 
                         $data = Search::whereIn('type',$search_in)
@@ -58,7 +61,8 @@ class SearchController extends Controller
                                 ->orWhere($description,'LIKE','%'.$search.'%')
                                 ->whereBetween($date,[$from,$to]);
                         })
-                        ->get();
+                        ->orderBy("date_".$lang,'desc')
+                        ->paginate(10);
 
         }
         else{
@@ -69,11 +73,12 @@ class SearchController extends Controller
                                 ->orWhere($description,'=','%'.$search.'%')
                                 ->whereBetween($date,[$from,$to]);
                         })
-                        ->get();
+                        ->orderBy("date_".$lang,'desc')
+                        ->paginate(10);
 
         }
         $words = DB::table('president')->where('type','word')->orderBy('id','desc')->first();
         $news = Search::take('5')->whereNotNull('title_'.$lang)->where('type','!=','word')->orderBy('date_'.$lang,'desc')->get();
-        return view('search_result')->with(['data'=>$data,'word'=>$words,'news'=>$news]);
+        return view('search_result')->with(['data'=>$data,'word'=>$words,'news'=>$news,'search_text'=>$search]);
     }
 }

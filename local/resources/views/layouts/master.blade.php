@@ -17,9 +17,16 @@
         {!! Breadcrumbs::renderIfExists() !!}
 
         <div class="ui fluid card" style="direction:rtl;float:right;text-align:right;">
-          <div class="content" id="bio" style="text-align:right">
+          <div class="content" style="text-align:right">
             @if ($content_header)
-              <h2 class="ui header title_font border">@yield('title')</h2>
+              <h2 class="ui header title_font border">
+                @if(isset($search_text))
+                  {{trans('search.search_title').'"'.$search_text.'"'}}
+                @else
+                  @yield('title')
+                @endif
+              </h2>
+
             @endif
             @yield('content')
             @if(strpos(Request::url(),'details') || strpos(Request::url(),'register_complaint') || strpos(Request::url(),'chief_of_staff')  || strpos(Request::url(),'presidential_palace') || strpos(Request::url(),'media_directorate'))

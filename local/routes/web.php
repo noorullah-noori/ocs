@@ -484,7 +484,7 @@ Route::get('news_details/{id?}','NewsController@newsDetails')->name('news_detail
 // Route::post('/language-chooser','LanguageController@changeLanguage');
 
 Route::get('search_result','SearchController@search_result')->name('search_result');
-Route::post('get_search',['uses'=>'SearchController@get_search','before'=>'csrf'])->name('get_search');
+Route::get('get_search','SearchController@get_search')->name('get_search');
 
 });
 

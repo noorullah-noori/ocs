@@ -97,7 +97,7 @@ class NewsController extends Controller
     	$news_details = DB::table('media')->where('type','news')->where('id',$id)->first();
         // $news = DB::table('media')->where('type','news')->whereNotNull('title_'.$lang)->orderBy('id','desc')->take(5)->get();
         $news = Search::take('5')->whereNotNull('title_'.$lang)->where('type','!=','word')->orderBy('date_'.$lang,'desc')->get();
-    	$final = $this->findSimilar($id);
+        $final = $this->findSimilar($id);
       return view('news_details')->with(['word'=>$words,'news_details'=>$news_details,'final'=>$final,'news'=>$news]);
     }
 

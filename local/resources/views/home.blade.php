@@ -89,7 +89,13 @@ $icon = '';
                 @if(sizeof($lattest_news)!=0)
                   @foreach($lattest_news as $item)
                     <?php
-                     $route =  ($item->table_name=='documents')?asset('uploads/documents_'.$lang.'/'.$item->table_id.'.pdf'):'';
+                    $route = '';
+                    if($item->table_name=='documents'){
+                      $route = asset('uploads/documents_'.$lang.'/'.$item->table_id.'.pdf');
+                    }
+                    elseif($item->table_name=='album'){
+                      $route = url($lang.'/'.$item->type.'_images/'.$item->table_id);
+                    }
                         // $img = '';
                        if($item->table_name=='documents'){
                           $extension = \File::extension($item->image_thumb);
@@ -119,7 +125,7 @@ $icon = '';
                       <div class="news {{($item == $lattest_news->last())?'no_borders':''}} article_padding" style="border-bottom:1px dashed #ddd;">
                         <div class="ui stackable grid" style="display:flex;margin:0 !important;">
                           <div class="sixteen wide mobile tablet eleven wide computer column" id="news_title" style="padding-top:0;">
-                            <a href="{{($item->table_name=='documents')?$route:url($lang.'/'.$item->type.'_details/'.$item->table_id)}}" class="ui {{$dir}} floated small header title_font title_to_be_trimmed" dir="rtl" style="margin:0">{{$item->$title}}</a>
+                            <a href="{{($item->table_name=='documents' || $item->table_name=='album')?$route:url($lang.'/'.$item->type.'_details/'.$item->table_id)}}" class="ui {{$dir}} floated small header title_font title_to_be_trimmed" dir="rtl" style="margin:0">{{$item->$title}}</a>
                             <p class="meta" style="clear: both">
                               <i class="icon clock">
                               </i>{{$jdate->detailedDate($item->$date,$lang)}}
@@ -219,7 +225,7 @@ $icon = '';
         <div class="sixteen wide tablet mobile seven wide computer column" id="documents">
           <div class="ui fluid card" style="">
             <div class="content" >
-              <a href="{{url($lang.'/documents')}}" class="header title_font test" style="">{{trans('home.reports_and_documents')}}</a>
+              <a href="{{url($lang.'/documents')}}" class="header title_font test" style="">{{trans('menu.reports_and_documents')}}</a>
               <div class="ui unstackable items" style="margin-top: 11px !important">
                 @if(sizeof($documents)!=0)
                   @foreach($documents as $document)

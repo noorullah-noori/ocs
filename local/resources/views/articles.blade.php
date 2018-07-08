@@ -5,7 +5,7 @@
     <div class="ui items">
       @foreach($articles as $item)
         <div class="ui item {{($item == $articles->last())?'no_border':''}}">
-          <div class="ui small image">
+          <div class="other_pages thumbnail">
             <img src="{{asset('uploads/article/'.$item->image_thumb)}}" style="padding-left:8px;">
           </div>
           <div class="content">

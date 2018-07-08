@@ -10,7 +10,7 @@ return [
 	'from'=>'From',
 	'to'=>'To',
 	'search_inside'=>'Search Inside',
-
+	'search_title'=>'Search result for',
 	];
 
 

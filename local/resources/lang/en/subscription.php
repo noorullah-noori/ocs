@@ -59,6 +59,7 @@ return
 		'news_reporter'=>'News Reporter',
 		'cartoonist'=>'cartoonist',
 		'official_social_media'=>'Website/Social Media Page(s) ',
+		// 'expert_in' => 'Expertise In',
 	
 	'registeration_form_for_experts'=>'Registration Form for Experts',
 		'descipline'=>'Your discipline (Field of study)',

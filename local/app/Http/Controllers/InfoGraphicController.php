@@ -205,56 +205,57 @@ class InfoGraphicController extends Controller
          $info->$title = $request->$title;
          
          if($request->$date!='') {
-
            $info->$date = $request->$date;
          }
-         
-          if($request->$img!=null) {
 
+          if($request->$img!=null || $request->$img_thumb!=null) {
             //construct image path
              $image_path = 'uploads/infographics/'.$lang.'/';
             
-            // validation
-              $this->validate($request,[
-                $img=>'required|mimes:jpg,jpeg,png,svg,bmp',
-              ]);
-
-            if($search_obj!=''){
-                if(file_exists($search_obj->image_thumb)){
-                  //remove existing images
-                  File::delete($search_obj->image_thumb);
-                  File::delete(str_replace('_t','',$search_obj->image_thumb));
-                }
-            }
-
-            //get the Image
-            $image = Image::make($request->$img);
-            $image_thumb = Image::make($request->$img_thumb);
+             if($request->$img_thumb!=null){
+                // validation
+                $this->validate($request,[
+                  $img_thumb=>'required|mimes:jpg,jpeg,png,svg,bmp',
+                ]);
                 
-           //  //resize if width larger than 2000px
-           // if($image->width()>2000) {
-           //    $image->resize(725, null, function ($constraint) {
-           //    $constraint->aspectRatio();
-           //    });
-           //  }
+                if($search_obj!=''){
+                  if(file_exists($search_obj->image_thumb)){
+                    //remove existing images
+                    File::delete($search_obj->image_thumb);
+                  }
+                  else{ 
+                  }
+                }
 
-             //set new images name
-             $image_name = $id.'.'.$request->$img->getClientOriginalExtension();
-             $image_thumb_name = $id.'_t.'.$request->$img_thumb->getClientOriginalExtension();
+                $image_thumb = Image::make($request->$img_thumb);
+                $image_thumb_name = $id.'_t.'.$request->$img_thumb->getClientOriginalExtension();
+                $image_thumb->save($image_path.$image_thumb_name);
+                $info->$img_thumb = $image_thumb_name;
+              }
+              elseif($request->$img!=''){
+                // validation
+                $this->validate($request,[
+                  $img=>'required|mimes:jpg,jpeg,png,svg,bmp',
+                ]);
 
-             $image->save($image_path.$image_name);
-             
-             //resize image for thumbnail
-             // $driver = new imageManager(array('driver'=>'gd'));
-             // $image_thumb =  $image->resize(200, null, function ($constraint) {
-             //                  $constraint->aspectRatio();
-             //                });
+              if($search_obj!=''){
+                  if(file_exists($search_obj->image_thumb)){
+                    //remove existing images
+                    File::delete(str_replace('_t','',$search_obj->image_thumb));
+                  }
+              }
 
-             //move i.e.(to storage) image
-             $image_thumb->save($image_path.$image_thumb_name);
-             //store in db
-             $info->$img = $image_name;
-             $info->$img_thumb = $image_thumb_name;
+              //get the Image
+              $image = Image::make($request->$img);
+              
+              //set new images name
+              $image_name = $id.'.'.$request->$img->getClientOriginalExtension();
+
+              $image->save($image_path.$image_name);
+
+              //store in db
+              $info->$img = $image_name;
+              }
            }
 
            if($info->save()) {

@@ -827,12 +827,12 @@
   padding:5px !important;
  }
  .footer_link{
-  font-size: 1em !important;
+   font-size: {{$lang=='en'?'.8em':'1em'}} !important;
   color: #131212 !important;
   margin:5px 0 !important;
  }
  .footer_title{
-  font-size: 1.2em !important;
+   font-size: {{$lang=='en'?'1.1em':'1.2em'}} !important;
  }
  .default.text,.text{
   float: {{$dir}};
@@ -1120,9 +1120,9 @@
         <div class="ui floating dropdown icon" id="lang-menu" style="border-radius:0" tabindex="0">
           <i class="icon globe"></i>
           <div class="menu" id="language" tabindex="-1">
-            <a href="javascript:void(0)" class="item body_font languageSwitcher" id="en" href="javascript:void(0)" style="">English</a>
-            <a href="javascript:void(0)" class="item body_font languageSwitcher" id="dr" href="javascript:void(0)" style="text-align:right;font-family:b_mitra;">دری</a>
             <a href="javascript:void(0)" class="item body_font languageSwitcher" href="javascript:void(0)" style="text-align:right;font-family:pashto_nazo;" id="pa">پښتو</a>
+            <a href="javascript:void(0)" class="item body_font languageSwitcher" id="dr" href="javascript:void(0)" style="text-align:right;font-family:b_mitra;">دری</a>
+            <a href="javascript:void(0)" class="item body_font languageSwitcher" id="en" href="javascript:void(0)" style="">English</a>
           </div>
         </div>
       </div>

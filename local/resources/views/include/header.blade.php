@@ -377,6 +377,13 @@
     .carousel_image_div img {
       height: 50% !important;
     }
+    #old_ocs_link {
+      text-align:center !important;
+    }
+    .ui.items>.item>.thumb_img img {
+      min-width: 100%; 
+      width: 100%;
+    }
   }
   @media screen and (min-width: 1023px) and (max-width:1440px) {
     .carousel_thumbnail {
@@ -810,6 +817,9 @@
   .description ol li{
     direction: {{$rtl}} !important;
     text-align: {{$dir}} !important;
+    font-family: aop_font !important;
+    color: black;
+    font-size: 1.12em;
   }
   .ui.breadcrumb {
     text-align: {{$dir}} !important;
@@ -1057,7 +1067,7 @@
   <div class="ui grid not-printable" id="search_box" style="padding-bottom:0px;display:none;">
     <div class="column" style="background-color:#2c2b4a;padding:5px 14px !important;margin-top:14px;">
       <div class="ui container" style="width:57%;padding-left:10px;">
-        <form class="ui form" action="{{url($lang.'/search_result')}}" name="search_form">
+        <form class="ui form" action="{{url($lang.'/search_result')}}" method="GET" name="search_form">
           <div class="field" style="display: inline;float: {{$dir}};width: 76%">
             <div class="ui icon input">
               <input class="prompt body_font" style="direction:ltr;" name="search" id="search_text" type="text" placeholder="{{trans('home.search')}}">
@@ -1088,9 +1098,9 @@
         <div class="ui floating dropdown icon" id="lang-menu" style="border-radius:0" tabindex="0">
           <i class="icon globe"></i>
           <div class="menu" id="language" tabindex="-1">
-            <a href="javascript:void(0)" class="item body_font languageSwitcher" id="en" href="javascript:void(0)" style="">English</a>
-            <a href="javascript:void(0)" class="item body_font languageSwitcher" id="dr" href="javascript:void(0)" style="text-align:right;font-family:b_mitra;">دری</a>
-            <a href="javascript:void(0)" class="item body_font languageSwitcher" href="javascript:void(0)" style="text-align:right;font-family:pashto_nazo;" id="pa">پښتو</a>
+              <a href="javascript:void(0)" class="item body_font languageSwitcher" href="javascript:void(0)" style="text-align:right;font-family:pashto_nazo;" id="pa">پښتو</a>
+              <a href="javascript:void(0)" class="item body_font languageSwitcher" id="dr" href="javascript:void(0)" style="text-align:right;font-family:b_mitra;">دری</a>
+              <a href="javascript:void(0)" class="item body_font languageSwitcher" id="en" href="javascript:void(0)" style="">English</a>
           </div>
         </div>
       </div>
