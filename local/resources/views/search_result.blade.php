@@ -2,7 +2,8 @@
 @section('title',trans('menu.ocs'))
 {{-- @section('search_title', 'نتایج جستجو برای کلمه') --}}
 @section('content')
-
+@php
+@endphp
   <div class="ui items" style="">
     @if(sizeof($data)!=0)
       @foreach($data as $value)

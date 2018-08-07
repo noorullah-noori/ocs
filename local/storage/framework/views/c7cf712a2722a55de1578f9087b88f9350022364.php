@@ -1,7 +1,8 @@
 <?php $__env->startSection('title',trans('menu.ocs')); ?>
 
 <?php $__env->startSection('content'); ?>
-
+<?php 
+ ?>
   <div class="ui items" style="">
     <?php if(sizeof($data)!=0): ?>
       <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

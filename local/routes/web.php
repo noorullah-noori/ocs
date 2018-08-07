@@ -449,20 +449,21 @@ Route::get('feed', function(){
        $feed->pubdate = $posts[0]->date_en;
        $feed->lang = 'en';
        $feed->setShortening(true); // true or false
-       $feed->setTextLimit(100); // maximum length of description text
-
-			 $lang = Config::get('app.locale');
-			 $title = 'title_'.$lang;
-			 $date = 'date_'.$lang;
-			 $short_desc = 'short_desc_'.$lang;
-			 $description = 'description_'.$lang;
+	   $feed->setTextLimit(100); // maximum length of description text
+	 
+	   $lang = Config::get('app.locale');
+	   $title = 'title_'.$lang;
+	   $date = 'date_'.$lang;
+	   $short_desc = 'short_desc_'.$lang;
+	   $description = 'description_'.$lang;
+	   
        foreach ($posts as $post)
        {
-				 		if($post->type!=false) {
-							$url = $post->type."_details/".$post->table_id;
-							// set item's title, author, url, pubdate, description, content, enclosure (optional)*
-							$feed->add($post->$title,'shaheer', URL::to($url), $post->$date, $post->$short_desc, $post->$description);
-						}
+			if($post->type!=false) {
+				$url = $post->type."_details/".$post->table_id;
+				// set item's title, author, url, pubdate, description, content, enclosure (optional)*
+				$feed->add($post->$title,'shaheer', URL::to($url), $post->$date, $post->$short_desc, $post->$description);
+			}
        }
 
     }
