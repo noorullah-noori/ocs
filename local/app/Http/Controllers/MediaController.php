@@ -54,7 +54,6 @@ class MediaController extends Controller
         $date = 'date_'.$lang;
         $short_desc = 'short_desc_'.$lang;
         $description = 'description_'.$lang;
-        // print_r($image);exit;
 
         // validation
           $this->validate($request,[
@@ -167,8 +166,6 @@ class MediaController extends Controller
           $search->image_thumb = $path.$image_thumb_name;
           $search->save();
         }
-        Session::put('lang','');
-        Session::put('type','');
         // Log::info($id." Media record created by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
         return Redirect()->route("admin_".$request->type);
 }

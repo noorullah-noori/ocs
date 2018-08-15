@@ -38,25 +38,14 @@ global $jdate;
                                       <input class=" form-control rtl" maxlength="150" value="{{$document->title_dr}}" id="title_dr" name="title_dr" type="text">
                                   </div>
                               </div>
-                              <div class="form-group form-check">
-                                <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                  <input type="checkbox" id="change_date" name="change_date" class="form-check-input">
-                                  Change Date?
-                                </label>
-                              </div>
+
                               <div class="form-group date_dari">
                                   <label for="date_dr" class="control-label col-lg-3">Date Dari</label>
                                   <div class="col-lg-6">
-                                    <input class="form-control change_date" disabled id="date_dr" value="{{$jdate->detailedDate($document->date_dr,$session)}}"  name="date_dr" type="text" required>
+                                    <input class="form-control date_dr" id="date_dr" value="{{$document->date_dr}}"  name="date_dr" type="text" required>
                                   </div>
                               </div>
-                              <div class="form-group form-check">
-                                  <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                    <input type="checkbox" id="replace_image" name="replace" class="form-check-input">
-                                    Replace PDF?
-                                  </label>
-                                </div>
-                              <div class="form-group" id="image_upload">
+                              <div class="form-group">
                                   <label for="pdf_dr" class="control-label col-lg-3">PDF Dari</label>
                                   <input type="file" name="pdf_dr" value="{{$document->pdf_dr}}" class="file">
                                   <div class="input-group col-md-6 col-md-offset-1 col-xs-12" style="padding-left:15px; padding-right:14px;">
@@ -75,26 +64,15 @@ global $jdate;
                                   </div>
                               </div>
 
-                              <div class="form-group form-check">
-                                <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                  <input type="checkbox" id="change_date" name="change_date" class="form-check-input">
-                                  Change Date?
-                                </label>
-                              </div>
                               <div class="form-group date_dari">
                                   <label for="date_pa" class="control-label col-lg-3">Date Pashto</label>
                                   <div class="col-lg-6">
-                                    <input class="form-control change_date" disabled id="date_pa" value="{{$jdate->detailedDate($document->date_dr,$session)}}"  name="date_pa" type="text" required>
+                                    <input class="form-control date_dr" id="date_pa" value="{{$document->date_dr}}"  name="date_pa" type="text" required>
                                   </div>
                               </div>
 
-                              <div class="form-group form-check">
-                                  <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                    <input type="checkbox" id="replace_image" name="replace" class="form-check-input">
-                                    Replace PDF?
-                                  </label>
-                                </div>
-                              <div class="form-group" id="image_upload">
+                             
+                              <div class="form-group">
                                   <label for="pdf_pa" class="control-label col-lg-3">PDF Pashto</label>
                                   <input type="file" name="pdf_pa" value="{{$document->pdf_pa}}" class="file">
                                   <div class="input-group col-md-6 col-md-offset-1 col-xs-12" style="padding-left:15px; padding-right:14px;">
@@ -119,13 +97,8 @@ global $jdate;
                                       <input class=" form-control" id="date_en" name="date_en" value="{{$document->date_en}}" type="date" required>
                                   </div>
                               </div>
-                              <div class="form-group form-check">
-                                  <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                    <input type="checkbox" id="replace_image" name="replace" class="form-check-input">
-                                    Replace PDF?
-                                  </label>
-                                </div>
-                              <div class="form-group" id="image_upload">
+
+                              <div class="form-group">
                                   <label for="pdf_en" class="control-label col-lg-3">PDF English</label>
                                   <input type="file" name="pdf_en" value="{{$document->pdf_en}}" class="file">
                                   <div class="input-group col-md-6 col-md-offset-1 col-xs-12" style="padding-left:15px; padding-right:14px;">

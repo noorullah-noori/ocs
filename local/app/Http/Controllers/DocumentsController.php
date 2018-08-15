@@ -61,7 +61,13 @@ class DocumentsController extends Controller
          //data storage
          $document = new Document();
          $document->$title = $request->$title;
-         $document->$date = $request->$date;
+         if($lang!='en'){
+            $document->date_dr = $request->$date;
+            $document->date_pa = $request->$date;
+         }
+         else{
+            $document->date_en = $request->$date;
+         }
 
          //save the record to retreive id later
          $document->save();
@@ -108,15 +114,19 @@ class DocumentsController extends Controller
               //search stuff
               $search = new Search();
               $search->$title = $request->$title;
-              $search->$date = $request->$date;
+              if($lang!='en'){
+                $search->date_dr = $request->$date;
+                $search->date_pa = $request->$date;
+             }
+             else{
+                $search->date_en = $request->$date;
+             }
               
               $search->table_name = 'documents';
               $search->table_id = $id;
               $search->image_thumb = $path.$pdf_name;
               $search->save();
             }
-
-            Session::put('lang','');
             // Log::info($id." Document record created by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
             return Redirect()->route('documents.index');
        
@@ -164,14 +174,19 @@ class DocumentsController extends Controller
           // validation
           $this->validate($request,[
             $title=>'required',
+            $date=>'required',
           ]);
           
           // info graphics data storage
            $document = Document::findOrFail($id);
            $search_obj = Search::where('table_name','=','documents')->where('table_id','=',$id)->first();
            $document->$title = $request->$title;
-           if($request->$date!='') {
-             $document->$date = $request->$date;
+           if($lang!='en') {
+             $document->date_pa = $request->$date;
+             $document->date_dr = $request->$date;
+           }
+           else{
+                $document->date_en = $request->$date;
            }
 
            if($request->$pdf!=null) {
@@ -208,8 +223,7 @@ class DocumentsController extends Controller
               $log->activity = 'update';
               $log->user_id = Auth::user()->id;
               $log->save();
-
-             Session::put('lang','');
+              
              // Log::info($id." $document->type updated by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
              return Redirect()->route('documents.index');
     }

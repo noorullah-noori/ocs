@@ -10,26 +10,16 @@ $title = "title_".$lang; ?>
         </div>
         <div class="ui cards" style="padding-top:10px">
     <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <form method="post" action="<?php echo e(route('update_album_image_title',$image->id)); ?>">
-        <?php echo e(csrf_field()); ?><?php echo e(method_field("PATCH")); ?>
+      <img src="<?php echo e(asset('uploads/albumImage/'.$image->image)); ?>" style="width:100%">
+      <form action="<?php echo e(route('update_album_image_title',$image->id)); ?>" class="ui form" method="POST"> 
+          <?php echo e(method_field('DELETE')); ?>
 
-              <div class="card" style="width:300px;padding:10px;">
-                <div class="image">
-                  <img src="<?php echo e(asset('uploads/albumImage/'.$image->image)); ?>" style="width:100%">
-                  <div class="container" style="padding-top: 5px">
-                    <input type="hidden" name="album_id" value="<?php echo e($album_id); ?>">
-                  <input type="text" name="title" value="<?php echo e($image->$title); ?>"> 
-                  <input type="submit" value="update" class="btn btn-sm btn-default">
-                  </div>
-                </div>
-              </div>
+          <?php echo e(csrf_field()); ?>
+
+            <input type="button" onclick="location.href='rout';" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom" value="Edit">
+            <input type="submit" class="btn m-btn--pill btn-secondary pull-right m-btn m-btn--hover-danger m-btn--custom" value="Delete">
     </form>
  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
- </div>
- <div class="container">
-   <a class="ui button" href="<?php echo e(URL::previous()); ?>" style="float:right;margin-right: 22%;">
-  Cancel
-</a>
  </div>
 </div>
 </section>

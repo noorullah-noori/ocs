@@ -62,9 +62,9 @@ class SearchController extends Controller
         if($type =='all'){
             $data = Search::whereIn('type',Session::get('search_in'))
                 ->where(function($query) use($title,$short_desc,$description,$date,$from,$to,$search){
-                    $query->where($title,'LIKE','%'.$search.'%')
-                    ->orWhere($short_desc,'LIKE','%'.$search.'%')
-                    ->orWhere($description,'LIKE','%'.$search.'%')
+                    $query->where($title,$search)
+                    ->orWhere($short_desc,$search)
+                    ->orWhere($description,$search)
                     ->whereBetween($date,[$from,$to]);
             })
             ->orderBy("date_".$lang,'desc')

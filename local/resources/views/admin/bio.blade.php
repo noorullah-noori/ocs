@@ -28,72 +28,29 @@ $i=1;
           <a class="btn btn-{{($lang=='pa'?'success':'default')}}" href="javascript:void(0)" onclick="show('pa')">Pashto</a>
         </div>
 <div class="" style="margin:10px;">
-  @if(sizeof($bio)==0 && Session::get('role')!='editor')
+  @if(sizeof($biography)==0 && Session::get('role')!='editor')
     <a class="btn btn-default pull-left" href="javascript:void(0)" onclick="create('{{$lang}}')" style="margin-bottom: 10px;">Create</a>
     @endif
 </div>
 <table class="table table-bordered" style="direction: {{$direction}}">
   <thead>
     <tr>
-      <th>Bio</th>
+      <th>Biography</th>
     </tr>
   </thead>
   <tbody>
-    @foreach($bio as $value)
-
-       <?php
-    $bio_value ='';
-      switch ($lang) {
-        case 'dr':
-          if($value->$bio_val=='') {
-            if($value->bio_pa=='') {
-              $bio_value = $value->bio_en;
-            }
-            else{
-              $bio_value = $value->bio_pa;
-            }
-          }
-          else {
-            $bio_value = $value->$bio_val;
-          }
-          break;
-        case 'pa':
-          if($value->$bio_val=='') {
-            if($value->bio_dr=='') {
-              $bio_value = $value->bio_en;
-            }
-            else{
-              $bio_value = $value->bio_dr;
-            }
-          }
-          else {
-            $bio_value = $value->$bio;
-          }
-          break;
-        case 'en':
-          if($value->$bio_val=='') {
-            if($value->bio_pa=='') {
-              $bio_value = $value->bio_dr;
-            }
-            else{
-              $bio_value = $value->bio_pa;
-            }
-          }
-          else {
-            $bio_value = $value->$bio;
-          }
-          break;
-      }
-       ?>
+       @php
+      $bio = "bio_".$lang;
+      @endphp
     <tr>
-      <td><div style="width:60em" class="test">{!!$bio_value!!}</div></td>
+      <td><div style="width:60em" class="test">{!!(($biography->$bio)=='')?'No Data in this language':$biography->$bio!!}</div></td>
     </tr>
     <tr>
       <td style="width:12em;">
-        <form action="{{ route('the_bio.destroy', $value->id) }}" class="ui form" method="POST">
+        <form action="{{ route('the_bio.destroy', $biography->id) }}" class="ui form" method="POST">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
-           <a class="btn btn-default pull-{{$dir}}" href="javascript:void(0)" onclick="edit('{{$lang.'_'.$value->id}}')" style="margin-bottom: 10px;">{{($value->$bio_val==''?'Add':'Edit')}}</a>
+           <a class="btn btn-default pull-{{$dir}}" href="javascript:void(0)" onclick="edit('{{$lang.'_'.$biography->id}}')" style="margin-bottom: 10px;">{{($biography->$bio==''?'Add':'Edit')}}</a>
             @if(Session::get('role')=='admin')
             <button class="ui tiny button red " onclick="return confirm_submit()">Delete</button>
             @endif
@@ -101,9 +58,7 @@ $i=1;
       </td>
     </tr>
     <tr>
-
     </tr>
- @endforeach
   </tbody>
 </table>
 </div>

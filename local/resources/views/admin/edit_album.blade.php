@@ -50,16 +50,11 @@ global $jdate; ?>
                                             <input class=" form-control rtl" id="title_dr" value="{{$album->title_dr}}" name="title_dr" type="text">
                                         </div>
                                     </div>
-                                    <div class="form-group form-check">
-                                        <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                          <input type="checkbox" id="change_date" name="change_date" class="form-check-input">
-                                          Change Date?
-                                        </label>
-                                      </div>
+                                   
                                       <div class="form-group date_dari">
                                           <label for="date_dr" class="control-label col-lg-3">Date Dari</label>
                                           <div class="col-lg-6">
-                                            <input class="form-control change_date" disabled id="date_dr" value="{{$jdate->detailedDate($album->date_dr,$session)}}"  name="date_dr" type="text" required>
+                                            <input class="form-control date_dr" id="date_dr" value="{{$album->date_dr}}"  name="date_dr" type="text" required>
                                           </div>
                                       </div>
                                     @else
@@ -70,16 +65,10 @@ global $jdate; ?>
                                         </div>
                                     </div>
 
-                                    <div class="form-group form-check">
-                                        <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                          <input type="checkbox" id="change_date" name="change_date" class="form-check-input">
-                                          Change Date?
-                                        </label>
-                                      </div>
                                       <div class="form-group date_dari">
                                           <label for="date_dr" class="control-label col-lg-3">Date Pashto</label>
                                           <div class="col-lg-6">
-                                            <input class="form-control change_date" disabled id="date_dr" value="{{$jdate->detailedDate($album->date_dr,$session)}}"  name="date_dr" type="text" required>
+                                            <input class="form-control date_dr" id="date_dr" value="{{$album->date_dr}}"  name="date_dr" type="text" required>
                                           </div>
                                       </div>
                                     @endif

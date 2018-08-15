@@ -1,5 +1,7 @@
 @include('admin.include.header')
-<?php $session = Session::get('lang'); ?>
+@php $session = Session::get('lang');
+     $route= Session::get('type');
+@endphp
 <style>
       .cropit-preview,.cropit-preview-test {
         background-color: #f8f8f8;
@@ -38,9 +40,6 @@
 
 
 </style>
-<?php
-$route= Session::get('type');
-?>
 <!--main content start-->
 <section id="main-content">
 <section class="wrapper">
@@ -150,27 +149,6 @@ $route= Session::get('type');
                             </div>
                         </div>
                         @endif
-                        {{-- <div class="form-group">
-                            <label for="image" class="control-label col-lg-3">Image</label>
-                            <input type="file" name="image" class="file">
-                            <div class="input-group col-md-6 col-xs-12" style="padding-left:15px; padding-right:14px;">
-                              <span class="input-group-addon"><i class="fa fa-file-image-o"></i></span>
-                              <input type="text" class="form-control input-lg" disabled placeholder="Upload Image">
-                              <span class="input-group-btn">
-                                <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-folder-open"></i> Browse</button>
-                              </span>
-                            </div>
-                        </div> --}}
-                        {{-- <div class="form-group">
-                          <div class="col-lg-3"></div>
-                          <div class="col-lg-6"> --}}
-                            {{-- <input type="file" class="">Upload Image --}}
-                            {{-- <label class="fileContainer">
-                                Browse Image
-                                <input type="file" class"cropit-image-input"/>
-                            </label>
-                          </div>
-                        </div> --}}
                         <div class="form-group">
                           <div class="col-lg-3"></div>
                           <div class="col-lg-6">

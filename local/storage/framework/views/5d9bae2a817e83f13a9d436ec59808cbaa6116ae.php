@@ -38,7 +38,7 @@ $i=1;
   <thead>
     <tr>
       <th>No.</th>
-      <th>Video Title</th>
+      <th class="table_title">Video Title</th>
       <th>Attachement</th>
       <th>Options</th>
     </tr>
@@ -111,9 +111,6 @@ $i=1;
  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </tbody>
 </table>
-           
-          
-          
 </div>
 </section>
 

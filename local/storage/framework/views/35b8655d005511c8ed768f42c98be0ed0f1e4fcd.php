@@ -39,7 +39,7 @@ $i=1;
     <tr>
       <th>No.</th>
       <th>Image</th>
-      <th>Title</th>
+      <th style="width:55% !important">Title</th>
       <th>Date</th>
       <th>Options</th>
     </tr>
@@ -105,8 +105,8 @@ $i=1;
 
           <?php if(Session::get('role')!='editor'): ?>
           <a href="<?php echo e(route('add_album_image',$value->id)); ?>" class="btn btn-xs btn-default">Add Images</a>
-        
           <?php endif; ?>
+          <a href="<?php echo e(url('admin/view_album_images/'.$value->id)); ?>" class="btn btn-xs btn-default">View Images</a>
           <a href="<?php echo e(route('edit_images',$value->id)); ?>" class="btn btn-xs btn-default">Edit Images</a>
            <a class="btn btn-xs btn-default pull-<?php echo e($dir); ?>" href="javascript:void(0)" onclick="edit('<?php echo e($lang.'_'.$value->id); ?>')" style="margin-bottom: 10px;"><?php echo e(($value->$title==''?'Add':'Edit')); ?></a>
           <?php if(Session::get('role')=='admin'): ?>

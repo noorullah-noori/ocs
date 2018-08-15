@@ -86,7 +86,9 @@ footer.timeline-Footer.u-cf {
    top: -20px;
    left: -35px;
   }
-
+.table_title{
+    width: 75% !important;
+}
 </style>
 
 </head>

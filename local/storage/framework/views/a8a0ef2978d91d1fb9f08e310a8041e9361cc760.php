@@ -24,18 +24,22 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 <script >
-  $('input#change_date').change(function() {
-  $('.change_date').prop('disabled', function(i, v) { return !v; });
-  $('.change_date').toggleClass('date_dr');
-  if($('.change_date').hasClass('date_dr')) {
-    $(".date_dr").pDatepicker({
+//   $('input#change_date').change(function() {
+//   $('.change_date').prop('disabled', function(i, v) { return !v; });
+//   $('.change_date').toggleClass('date_dr');
+//   if($('.change_date').hasClass('date_dr')) {
+//     $(".date_dr").pDatepicker({
+//       format : "YYYY - MM - DD"
+//     });
+//   }
+//   else {
+//     $('.change_date').val($('.change_date').attr("value"));
+//   }
+// });
+$(".date_dr").pDatepicker({
       format : "YYYY - MM - DD"
-    });
-  }
-  else {
-    $('.change_date').val($('.change_date').attr("value"));
-  }
 });
+
 $(function() {
   $('.image-editor').cropit();
 

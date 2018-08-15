@@ -44,26 +44,14 @@ global $jdate;
                                           <input class=" form-control rtl" id="title_dr" maxlength="150" value="<?php echo e($info->title_dr); ?>" name="title_dr" type="text">
                                       </div>
                                   </div>
-                                  <div class="form-group form-check">
-                                    <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                      <input type="checkbox" id="change_date" name="change_date" class="form-check-input">
-                                      Change Date?
-                                    </label>
-                                  </div>
                                   <div class="form-group date_dari">
                                       <label for="date_dr" class="control-label col-lg-3">Date Dari</label>
                                       <div class="col-lg-6">
-                                        <input class="form-control change_date" disabled id="date_dr" value="<?php echo e($jdate->detailedDate($info->date_dr,$session)); ?>"  name="date_dr" type="text" required>
+                                        <input class="form-control date_dr" id="date_dr" value="<?php echo e($info->date_dr); ?>"  name="date_dr" type="text" required>
                                       </div>
                                   </div>
 
-                                <div class="form-group form-check">
-                                  <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                    <input type="checkbox" id="replace_image" name="replace" class="form-check-input">
-                                    Replace Image?
-                                  </label>
-                                </div>
-                                <div class="form-group" id="image_upload">
+                                <div class="form-group">
                                     <label for="image_dr" class="control-label col-lg-3">Image</label>
                                     <input type="file" name="image_dr" class="file" value="<?php echo e($info->image_dr); ?>">
                                     <div class="input-group col-md-6 col-md-offset-1 col-xs-12" style="padding-left:15px; padding-right:14px;">
@@ -75,13 +63,7 @@ global $jdate;
                                     </div>
                                 </div>
 
-                                <div class="form-group form-check">
-                                  <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                    <input type="checkbox" id="replace_image_thumb" name="replace" class="form-check-input">
-                                    Replace Image Thumb?
-                                  </label>
-                                </div>
-                                <div class="form-group" id="image_upload_thumb">
+                                <div class="form-group">
                                     <label for="image_thumb_dr" class="control-label col-lg-3">Image Thumb</label>
                                     <input type="file" name="image_thumb_dr" class="file" value="<?php echo e($info->image_thumb_dr); ?>">
                                     <div class="input-group col-md-6 col-md-offset-1 col-xs-12" style="padding-left:15px; padding-right:14px;">
@@ -102,26 +84,14 @@ global $jdate;
                                       </div>
                                   </div>
 
-                                  <div class="form-group form-check">
-                                    <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                      <input type="checkbox" id="change_date" name="change_date" class="form-check-input">
-                                      Change Date?
-                                    </label>
-                                  </div>
                                   <div class="form-group date_dari">
                                       <label for="date_dr" class="control-label col-lg-3">Date Pashto</label>
                                       <div class="col-lg-6">
-                                        <input class="form-control change_date" disabled id="date_dr" value="<?php echo e($jdate->detailedDate($info->date_dr,$session)); ?>"  name="date_dr" type="text" required>
+                                        <input class="form-control date_dr" id="date_dr" value="<?php echo e($info->date_dr); ?>"  name="date_dr" type="text" required>
                                       </div>
                                   </div>
 
-                                   <div class="form-group form-check">
-                                  <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                    <input type="checkbox" id="replace_image" name="replace" class="form-check-input">
-                                    Replace Image?
-                                  </label>
-                                </div>
-                                <div class="form-group" id="image_upload">
+                                <div class="form-group">
                                     <label for="image_pa" class="control-label col-lg-3">Image</label>
                                     <input type="file" name="image_pa" class="file" value="<?php echo e($info->image_pa); ?>">
                                     <div class="input-group col-md-6 col-md-offset-1 col-xs-12" style="padding-left:15px; padding-right:14px;">
@@ -133,13 +103,7 @@ global $jdate;
                                     </div>
                                 </div>
 
-                                <div class="form-group form-check">
-                                  <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                    <input type="checkbox" id="replace_image_thumb" name="replace" class="form-check-input">
-                                    Replace Image Thumb?
-                                  </label>
-                                </div>
-                                <div class="form-group" id="image_upload_thumb">
+                                <div class="form-group">
                                     <label for="image_thumb_pa" class="control-label col-lg-3">Image Thumb</label>
                                     <input type="file" name="image_thumb_pa" class="file" value="<?php echo e($info->image_thumb_pa); ?>">
                                     <div class="input-group col-md-6 col-md-offset-1 col-xs-12" style="padding-left:15px; padding-right:14px;">
@@ -166,13 +130,7 @@ global $jdate;
                                       </div>
                                   </div>
 
-                                  <div class="form-group form-check">
-                                  <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                    <input type="checkbox" id="replace_image" name="replace" class="form-check-input">
-                                    Replace Image?
-                                  </label>
-                                </div>
-                                <div class="form-group" id="image_upload">
+                                <div class="form-group">
                                     <label for="image" class="control-label col-lg-3">Image</label>
                                     <input type="file" name="image_en" class="file" value="<?php echo e($info->image_en); ?>">
                                     <div class="input-group col-md-6 col-md-offset-1 col-xs-12" style="padding-left:15px; padding-right:14px;">
@@ -184,13 +142,7 @@ global $jdate;
                                     </div>
                                 </div>
 
-                                <div class="form-group form-check">
-                                  <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                    <input type="checkbox" id="replace_image_thumb" name="replace" class="form-check-input">
-                                    Replace Image Thumb?
-                                  </label>
-                                </div>
-                                <div class="form-group" id="image_upload_thumb">
+                                <div class="form-group">
                                     <label for="image_thumb_en" class="control-label col-lg-3">Image Thumb</label>
                                     <input type="file" name="image_thumb_en" class="file" value="<?php echo e($info->image_thumb_en); ?>">
                                     <div class="input-group col-md-6 col-md-offset-1 col-xs-12" style="padding-left:15px; padding-right:14px;">

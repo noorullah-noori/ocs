@@ -53,14 +53,13 @@ class LinksController extends Controller
         $this->validate($request,[
               $title=>'required|unique:links|max:255',
               $description=>'required',
-              // 'url'=>'required'
+              'image'=>'required|mimes:jpg,png,jpeg',
             ]);
 
         //data storage
         $link = new Links();
         $link->$title = $request->$title;
         $link->$description = $request->$description;
-        // $link->url = $request->input('url');
         
         //save the record to retreive id later
         $link->save();
@@ -103,8 +102,6 @@ class LinksController extends Controller
         }
 
         $link->save();
-        Session::put('lang','');
-        // Log::info($id." Link created by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
         return Redirect()->route('links.index');
     }
 
@@ -185,8 +182,6 @@ class LinksController extends Controller
           $log->user_id = Auth::user()->id;
           $log->save();
 
-          Session::put('lang','');
-          // Log::info($id." Link updated by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
           return Redirect()->route('links.index');
     }
 
@@ -210,8 +205,7 @@ class LinksController extends Controller
           $log->activity = 'delete';
           $log->user_id = Auth::user()->id;
           $log->save();
-
-        // Log::info($id." Link deleted by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
+          
         return Redirect()->route('links.index');
     }
 }

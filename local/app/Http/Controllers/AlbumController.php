@@ -24,9 +24,6 @@ class AlbumController extends Controller
     public function index()
     {
         $album = Album::orderBy('id','desc')->get();
-         if(Session::get('view_lang')==''){
-          Session::put('view_lang','en');
-         }
         return view('admin.album')->with('album',$album);
     }
 
@@ -137,7 +134,6 @@ class AlbumController extends Controller
                   $search->image_thumb = $path.$image_thumb_name;
                   $search->save();
                 }
-                Session::put('lang','');
                 // Log::info($id." Album record created by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
                 return Redirect()->route('album.index');
 
@@ -183,6 +179,7 @@ class AlbumController extends Controller
         // validation
         $this->validate($request,[
           $title=>'required',
+          $date=>'required',
         ]);
 
       // album data storage

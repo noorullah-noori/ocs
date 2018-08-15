@@ -1,9 +1,10 @@
 @include('admin.include.header')
-<?php
-$session = Session::get('lang');
-global $jdate;
+@php
 
- ?>
+  $session = Session::get('lang');
+  global $jdate;
+
+@endphp
 
 <style>
     .file {
@@ -75,24 +76,12 @@ global $jdate;
                                           <input class=" form-control rtl" id="title_dr" value="{{$media->title_dr}}" name="title_dr" type="text">
                                       </div>
                                   </div>
-                                  <div class="form-group form-check">
-                                    <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                      <input type="checkbox" id="change_date" name="change_date" class="form-check-input">
-                                      Change Date?
-                                    </label>
-                                  </div>
                                   <div class="form-group date_dari">
                                       <label for="date_dr" class="control-label col-lg-3">Date Dari</label>
                                       <div class="col-lg-6">
-                                        <input class="form-control change_date" disabled id="date_dr" value="{{$jdate->detailedDate($media->date_dr,$session)}}"  name="date_dr" type="text" required>
+                                        <input class="form-control date_dr" id="date_dr" value="{{$media->date_dr}}" name="date_dr" type="text" required>
                                       </div>
                                   </div>
-                                  {{-- <div class="form-group ">
-                                      <label for="date_dr" class="control-label col-lg-3">Date Dari</label>
-                                      <div class="col-lg-6">
-                                          <input class=" form-control date_dr rtl"  id="date_dr" value="{{$media->date_dr}}" name="date_dr" type="text" required>
-                                      </div>
-                                  </div> --}}
                                   <div class="form-group ">
                                       <label for="short_desc_dr" class="control-label col-lg-3">Short Description Dari</label>
                                       <div class="col-lg-6">
@@ -201,9 +190,6 @@ global $jdate;
                                         Browse Image
                                       </label>
                                       <div class="cropit-preview"></div>
-                                      {{-- <div class="image-size-label">
-                                        Resize image
-                                      </div> --}}
                                       <input type="range" class="cropit-image-zoom-input">
                                       <input type="hidden" name="image-data" class="hidden-image-data" />
                                     </div>

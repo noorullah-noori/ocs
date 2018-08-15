@@ -40,7 +40,7 @@ $i=1;
     <tr>
       <th>No.</th>
       <th>Image</th>
-      <th>Title</th>
+      <th class="table_title">Title</th>
       <th>Date</th>
       <th>Options</th>
     </tr>

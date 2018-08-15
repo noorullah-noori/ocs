@@ -1,5 +1,7 @@
 <?php echo $__env->make('admin.include.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php $session = Session::get('lang'); ?>
+<?php  $session = Session::get('lang');
+     $route= Session::get('type');
+ ?>
 <style>
       .cropit-preview,.cropit-preview-test {
         background-color: #f8f8f8;
@@ -38,9 +40,6 @@
 
 
 </style>
-<?php
-$route= Session::get('type');
-?>
 <!--main content start-->
 <section id="main-content">
 <section class="wrapper">
@@ -151,10 +150,6 @@ $route= Session::get('type');
                             </div>
                         </div>
                         <?php endif; ?>
-                        
-                        
-                            
-                            
                         <div class="form-group">
                           <div class="col-lg-3"></div>
                           <div class="col-lg-6">

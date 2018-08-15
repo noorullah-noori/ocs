@@ -40,7 +40,7 @@ $i=1;
     <tr>
       <th>No.</th>
       <th>Image</th>
-      <th>Title</th>
+      <th style="width:55% !important">Title</th>
       <th>Date</th>
       <th>Options</th>
     </tr>
@@ -104,13 +104,8 @@ $i=1;
 
           @if(Session::get('role')!='editor')
           <a href="{{route('add_album_image',$value->id)}}" class="btn btn-xs btn-default">Add Images</a>
-        {{--   <select class="form-control me" id="add" name="image_num" style="width:30%;height:23px;padding:0px !important;margin-{{$dir}}:1px;display:inline">
-            <option value="">Add Images</option>
-            <option value="1_{{$value->id}}">1</option>
-            <option value="2_{{$value->id}}">2</option>
-            <option value="3_{{$value->id}}">3</option>
-          </select> --}}
           @endif
+          <a href="{{url('admin/view_album_images/'.$value->id)}}" class="btn btn-xs btn-default">View Images</a>
           <a href="{{route('edit_images',$value->id)}}" class="btn btn-xs btn-default">Edit Images</a>
            <a class="btn btn-xs btn-default pull-{{$dir}}" href="javascript:void(0)" onclick="edit('{{$lang.'_'.$value->id}}')" style="margin-bottom: 10px;">{{($value->$title==''?'Add':'Edit')}}</a>
           @if(Session::get('role')=='admin')

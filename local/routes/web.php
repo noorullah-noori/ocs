@@ -456,7 +456,7 @@ Route::get('feed', function(){
 	   $date = 'date_'.$lang;
 	   $short_desc = 'short_desc_'.$lang;
 	   $description = 'description_'.$lang;
-	   
+
        foreach ($posts as $post)
        {
 			if($post->type!=false) {

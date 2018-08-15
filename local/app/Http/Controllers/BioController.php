@@ -19,8 +19,8 @@ class BioController extends Controller
      */
     public function index()
     {
-        $bio = Bio::all();
-        return view('admin.bio')->with('bio',$bio);
+        $biography = Bio::first();
+        return view('admin.bio')->with('biography',$biography);
     }
 
     /**

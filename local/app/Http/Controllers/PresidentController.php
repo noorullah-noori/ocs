@@ -59,6 +59,8 @@ class PresidentController extends Controller
           // validation
         $this->validate($request,[
           $short_desc=>'required',
+          $title=>'required',
+          $date=>'required',
           'image'=>'required|mimes:jpg,jpeg,png,bmp',
         ]);
         }
@@ -67,6 +69,7 @@ class PresidentController extends Controller
           $this->validate($request,[
             $title=>'required|max:250',
             $short_desc=>'max:250',
+            $date=>'required',
             $description=>'required',
             'image'=>'mimes:jpg,jpeg,png,bmp',
           ]);
@@ -75,9 +78,10 @@ class PresidentController extends Controller
           // validation
           $this->validate($request,[
             $title=>'required|max:250',
+            $date=>'required',
             $short_desc=>'required|max:250',
             $description=>'required',
-            'image'=>'mimes:jpg,jpeg,png,bmp',
+            'image'=>'required|mimes:jpg,jpeg,png,bmp',
           ]);
         }
 
@@ -217,12 +221,18 @@ class PresidentController extends Controller
       $date = 'date_'.$lang;
       $short_desc = 'short_desc_'.$lang;
       $description = 'description_'.$lang;
-
+      // validation
+          $this->validate($request,[
+            $title=>'required|max:250',
+            $date=>'required',
+            $short_desc=>'required|max:250',
+            $description=>'required',
+          ]);
       // president data storage
        $the_president = President::findOrFail($id);
        $search_obj = Search::where('table_name','=','president')->where('table_id','=',$id)->first();
        $the_president->$title = $request->$title;
-       if($request->$date!='') {
+       // if($request->$date!='') {
         if($lang!='en'){
          $the_president->date_pa = $request->$date;
          $the_president->date_dr = $request->$date;
@@ -230,7 +240,7 @@ class PresidentController extends Controller
         else{
          $the_president->date_en = $request->$date; 
         }
-       }
+       // }
        $the_president->$short_desc = $request->$short_desc;
        $the_president->$description = $request->$description;
 

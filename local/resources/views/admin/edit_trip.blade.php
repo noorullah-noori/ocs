@@ -36,18 +36,13 @@ global $jdate; ?>
                                           <input class=" form-control rtl" id="title_dr" value="{{$trip->title_dr}}" name="title_dr" type="text">
                                       </div>
                                   </div>
-                                  <div class="form-group form-check">
-                                        <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                          <input type="checkbox" id="change_date" name="change_date" class="form-check-input">
-                                          Change Date?
-                                        </label>
-                                      </div>
-                                      <div class="form-group date_dari">
-                                          <label for="date_dr" class="control-label col-lg-3">Date Dari</label>
-                                          <div class="col-lg-6">
-                                            <input class="form-control change_date" disabled id="date_dr" value="{{$jdate->detailedDate($trip->date_dr,$session)}}"  name="date_dr" type="text" required>
-                                          </div>
-                                      </div>
+
+                                  <div class="form-group date_dari">
+                                        <label for="date_dr" class="control-label col-lg-3">Date Dari</label>
+                                        <div class="col-lg-6">
+                                        <input class="form-control date_dr" id="date_dr" value="{{$trip->date_dr}}"  name="date_dr" type="text" required>
+                                        </div>
+                                  </div>
                                   <div class="form-group ">
                                       <label for="short_desc_dr" class="control-label col-lg-3">Short Description Dari</label>
                                       <div class="col-lg-6">
@@ -69,18 +64,13 @@ global $jdate; ?>
                                           <input class=" form-control rtl" id="title_pa" value="{{$trip->title_pa}}" name="title_pa" type="text">
                                       </div>
                                   </div>
-                                  <div class="form-group form-check">
-                                        <label class="col-lg-6 col-md-offset-1 form-check-label">
-                                          <input type="checkbox" id="change_date" name="change_date" class="form-check-input">
-                                          Change Date?
-                                        </label>
-                                      </div>
-                                      <div class="form-group date_dari">
-                                          <label for="date_pa" class="control-label col-lg-3">Date Pashto</label>
-                                          <div class="col-lg-6">
-                                            <input class="form-control change_date" disabled id="date_pa" value="{{$jdate->detailedDate($trip->date_dr,$session)}}"  name="date_pa" type="text" required>
-                                          </div>
-                                      </div>
+                                
+                                  <div class="form-group date_dari">
+                                    <label for="date_pa" class="control-label col-lg-3">Date Pashto</label>
+                                    <div class="col-lg-6">
+                                    <input class="form-control date_dr" id="date_pa" value="{{$trip->date_pa}}"  name="date_pa" type="text" required>
+                                    </div>
+                                  </div>
 
                                   <div class="form-group ">
                                       <label for="short_desc_pa" class="control-label col-lg-3">Short Description Pashto</label>

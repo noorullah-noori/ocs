@@ -11,25 +11,14 @@ $title = "title_".$lang; ?>
         </div>
         <div class="ui cards" style="padding-top:10px">
     @foreach($images as $image)
-        <form method="post" action="{{route('update_album_image_title',$image->id)}}">
-        {{csrf_field()}}{{method_field("PATCH")}}
-              <div class="card" style="width:300px;padding:10px;">
-                <div class="image">
-                  <img src="{{asset('uploads/albumImage/'.$image->image)}}" style="width:100%">
-                  <div class="container" style="padding-top: 5px">
-                    <input type="hidden" name="album_id" value="{{$album_id}}">
-                  <input type="text" name="title" value="{{$image->$title}}"> 
-                  <input type="submit" value="update" class="btn btn-sm btn-default">
-                  </div>
-                </div>
-              </div>
+      <img src="{{asset('uploads/albumImage/'.$image->image)}}" style="width:100%">
+      <form action="{{route('update_album_image_title',$image->id)}}" class="ui form" method="POST"> 
+          {{ method_field('DELETE') }}
+          {{csrf_field()}}
+            <input type="button" onclick="location.href='rout';" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom" value="Edit">
+            <input type="submit" class="btn m-btn--pill btn-secondary pull-right m-btn m-btn--hover-danger m-btn--custom" value="Delete">
     </form>
  @endforeach
- </div>
- <div class="container">
-   <a class="ui button" href="{{URL::previous()}}" style="float:right;margin-right: 22%;">
-  Cancel
-</a>
  </div>
 </div>
 </section>

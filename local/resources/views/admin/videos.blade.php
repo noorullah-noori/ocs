@@ -39,7 +39,7 @@ $i=1;
   <thead>
     <tr>
       <th>No.</th>
-      <th>Video Title</th>
+      <th class="table_title">Video Title</th>
       <th>Attachement</th>
       <th>Options</th>
     </tr>
@@ -110,11 +110,6 @@ $i=1;
  @endforeach
   </tbody>
 </table>
-           {{-- Pagination start --}}
-          {{-- <div class="ui centered grid">
-            {{$videos->links()}}
-          </div> --}}
-          {{-- Pagination End --}}
 </div>
 </section>
 

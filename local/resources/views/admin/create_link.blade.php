@@ -66,12 +66,6 @@
                                         </div>
                                     </div>
                                     @endif
-                                    {{--  <div class="form-group ">
-                                        <label for="url" class="control-label col-lg-3">Web Url</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="url"  value="{{old('url')}}" name="url" type="text">
-                                        </div>
-                                    </div> --}}
 
 
                                     <div class="form-group">

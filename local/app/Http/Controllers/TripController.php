@@ -54,12 +54,12 @@ class TripController extends Controller
 
         // validation
         $this->validate($request,[
-              $title=>'required|unique:trips|max:255',
+              $title=>'required|max:255',
               $date=>'required',
               'image'=>'required|mimes:jpg,jpeg,png,bmp',
-              // $short_desc ='required',
-              // $description ='required'
+              $description =>'required'
           ]);
+
         //data storage
         $trip = new Trip();
         $trip->$title = $request->$title;
@@ -148,8 +148,7 @@ class TripController extends Controller
           $search->image_thumb = $path.$image_thumb_name;
           $search->save();
         }
-        Session::put('lang','');
-        Session::put('type','');
+        // Session::put('type','');
         // Log::info($id." Trips record created by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
         return Redirect()->route("admin_".$request->type);
     }
@@ -193,19 +192,25 @@ class TripController extends Controller
         $date = 'date_'.$lang;
         $short_desc = 'short_desc_'.$lang;
         $description = 'description_'.$lang;
+
         // validation
         $this->validate($request,[
           $title=>'required',
-          // $short_desc=>'required',
+          $date=>'required',
           $description=>'required',
         ]);
 
       // trip data storage
        $trip = Trip::findOrFail($id);
        $search_obj = Search::where('table_name','=','trips')->where('table_id','=',$id)->first();
+
        $trip->$title = $request->$title;
-       if($request->$date!='') {
-         $trip->$date = $request->$date;
+       if($lang!='en'){
+        $trip->date_pa = $request->$date;  
+        $trip->date_dr = $request->$date;
+       }
+       else{
+        $trip->date_en = $request->$date;
        }
        $trip->$short_desc = $request->$short_desc;
        $trip->$description = $request->$description;

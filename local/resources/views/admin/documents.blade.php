@@ -41,7 +41,7 @@ $title_value ='';
   <thead>
     <tr>
       <th>No.</th>
-      <th>Title</th>
+      <th class="table_title">Title</th>
       <th>Date</th>
       <th>Attachement</th>
       <th>Options</th>

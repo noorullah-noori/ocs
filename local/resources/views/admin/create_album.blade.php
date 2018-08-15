@@ -1,5 +1,7 @@
 @include('admin.include.header')
-<?php $session = Session::get('lang'); ?>
+@php 
+    $session = Session::get('lang');
+@endphp
 <style>
     .file {
       visibility: hidden;

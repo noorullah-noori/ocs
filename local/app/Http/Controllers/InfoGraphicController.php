@@ -52,21 +52,27 @@ class InfoGraphicController extends Controller
         $lang = Session::get('lang');
         $title = 'title_'.$lang;
         $date = 'date_'.$lang;
-          // 1
         $img = 'image_'.$lang;
         $img_thumb = "image_thumb_".$lang;
+
         // validation
-        // 2
           $this->validate($request,[
             $title=>'required',
             $date=>'required',
             $img=>'required|mimes:jpg,jpeg,png,svg',
+            $img_thumb=>'required|mimes:jpg,jpeg,png,svg',
           ]);
 
         //data storage
          $info = new InfoGraphic();
          $info->$title = $request->$title;
-         $info->$date = $request->$date;
+        if($lang!='en'){
+          $info->date_dr = $request->$date;
+          $info->date_pa = $request->$date;
+        }
+        else{
+          $info->date_en = $request->$date;
+        }
 
          //save the record to retreive id later
          $info->save();
@@ -97,12 +103,6 @@ class InfoGraphicController extends Controller
             // make image
             $image = Image::make($request->$img);
             $image_thumb = Image::make($request->$img_thumb);
-             // //resize if width larger than 2000px
-             //  if($image->width()>2000) {
-             //    $image->resize(725, null, function ($constraint) {
-             //      $constraint->aspectRatio();
-             //    });
-             //  }
 
             //image names i.e. (image and image_thumb)
             $image_name = $id.'.'.$request->$img->getClientOriginalExtension();
@@ -110,12 +110,6 @@ class InfoGraphicController extends Controller
 
             // save the orignal image resized
             $image->save($path.$image_name);
-
-            //resize image for thumbnail
-            // $driver = new imageManager(array('driver'=>'gd'));
-            // $image_thumb = $image->resize(200, null, function ($constraint) {
-            //                   $constraint->aspectRatio();
-            //                 });
 
             //store image and thumbnail in storage
             $image_thumb->save($path.$image_thumb_name);
@@ -137,7 +131,14 @@ class InfoGraphicController extends Controller
               //search stuff
               $search = new Search();
               $search->$title = $request->$title;
-              $search->$date = $request->$date;
+
+              if($lang!='en'){
+                $search->date_pa = $request->$date;
+                $search->date_dr = $request->$date;
+              }
+              else{
+                $search->date_en = $request->$date;
+              }
               
               $search->table_name = 'infographics';
               $search->type = 'infographic';
@@ -145,7 +146,6 @@ class InfoGraphicController extends Controller
               $search->image_thumb = $image_thumb_name;
               $search->save();
             }
-            Session::put('lang','');
             // Log::info($id." InfoGraphics record created by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
             return Redirect()->route('infographic.index');
     }
@@ -195,6 +195,7 @@ class InfoGraphicController extends Controller
         // validation
         $this->validate($request,[
           $title=>'required',
+          $date=>'required',
         ]);
 
         // info graphics data storage
@@ -204,8 +205,12 @@ class InfoGraphicController extends Controller
 
          $info->$title = $request->$title;
          
-         if($request->$date!='') {
-           $info->$date = $request->$date;
+         if($lang!='en') {
+           $info->date_pa = $request->$date;
+           $info->date_dr = $request->$date;
+         }
+         else{
+           $info->date_en = $request->$date;
          }
 
           if($request->$img!=null || $request->$img_thumb!=null) {
@@ -232,11 +237,6 @@ class InfoGraphicController extends Controller
                 $image_thumb->save($image_path.$image_thumb_name);
                 $info->$img_thumb = $image_thumb_name;
               }
-              elseif($request->$img!=''){
-                // validation
-                $this->validate($request,[
-                  $img=>'required|mimes:jpg,jpeg,png,svg,bmp',
-                ]);
 
               if($search_obj!=''){
                   if(file_exists($search_obj->image_thumb)){
@@ -255,12 +255,17 @@ class InfoGraphicController extends Controller
 
               //store in db
               $info->$img = $image_name;
-              }
            }
 
            if($info->save()) {
                $search_obj->$title = $request->$title;
-               $search_obj->$date = $request->$date;
+               if($lang!='en'){
+                  $search_obj->date_pa = $request->$date;
+                  $search_obj->date_dr = $request->$date;
+               }
+               else{
+                $search_obj->date_en = $request->$date;
+               }
                $search_obj->save();
              }
 
@@ -272,7 +277,6 @@ class InfoGraphicController extends Controller
             $log->user_id = Auth::user()->id;
             $log->save();
 
-             Session::put('lang','');
              // Log::info($id." $info->type updated by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
              return Redirect()->route('infographic.index');
     }

@@ -59,15 +59,28 @@ class videoController extends Controller
 
           // data storage to db
           $video = new video();
-          $video->$title = $request->input($title);
-          $video->$date = $request->input($date);
-          $video->$url = $request->input($video_val);
+          $video->$title = $request->$title;
+          if($lang!='en'){
+            $video->date_pa = $request->$date;
+            $video->date_dr = $request->$date;
+          }
+          else{
+            $video->date_en = $request->$date;
+          }
+          $video->$url = $request->$video_val;
 
           if($video->save()){
               $search = new Search();
-                $search->$title = $request->input($title);
-                $search->$date = $request->input($date);
-                $search->image_thumb = $request->input($video_val);
+                $search->$title = $request->$title;
+                if($lang!='en'){
+                    $search->date_pa = $request->$date;
+                    $search->date_dr = $request->$date;
+                }
+                else{
+                    $search->date_en = $request->$date;
+                }
+
+                $search->image_thumb = $request->$video_val;
                 $search->table_name = 'videos';
                 $search->type = 'video';
                 $search->table_id = $video->id;
@@ -82,7 +95,6 @@ class videoController extends Controller
           $log->user_id = Auth::user()->id;
           $log->save();
 
-          Session::put('lang','');
           // Log::info($video->id." Video created by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
           return Redirect()->route('videos.index');
     }
@@ -129,7 +141,8 @@ class videoController extends Controller
 
           // validation
           $this->validate($request,[
-            $title=>'max:255'
+            $title=>'max:255',
+            $date => 'required',
           ]);
 
           // data storage to db
