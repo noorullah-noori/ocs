@@ -82,12 +82,12 @@ class FunctionCallArgumentSpacingSniff implements Sniff
         $closeBracket  = $tokens[$openBracket]['parenthesis_closer'];
         $nextSeparator = $openBracket;
 
-        $find = array(
-                 T_COMMA,
-                 T_VARIABLE,
-                 T_CLOSURE,
-                 T_OPEN_SHORT_ARRAY,
-                );
+        $find = [
+            T_COMMA,
+            T_VARIABLE,
+            T_CLOSURE,
+            T_OPEN_SHORT_ARRAY,
+        ];
 
         while (($nextSeparator = $phpcsFile->findNext($find, ($nextSeparator + 1), $closeBracket)) !== false) {
             if ($tokens[$nextSeparator]['code'] === T_CLOSURE) {
@@ -115,10 +115,19 @@ class FunctionCallArgumentSpacingSniff implements Sniff
                         $error = 'Space found before comma in function call';
                         $fix   = $phpcsFile->addFixableError($error, $nextSeparator, 'SpaceBeforeComma');
                         if ($fix === true) {
-                            $phpcsFile->fixer->replaceToken(($nextSeparator - 1), '');
+                            $phpcsFile->fixer->beginChangeset();
+
+                            if ($tokens[$prev]['line'] !== $tokens[$nextSeparator]['line']) {
+                                $phpcsFile->fixer->addContent($prev, ',');
+                                $phpcsFile->fixer->replaceToken($nextSeparator, '');
+                            } else {
+                                $phpcsFile->fixer->replaceToken(($nextSeparator - 1), '');
+                            }
+
+                            $phpcsFile->fixer->endChangeset();
                         }
-                    }
-                }
+                    }//end if
+                }//end if
 
                 if ($tokens[($nextSeparator + 1)]['code'] !== T_WHITESPACE) {
                     $error = 'No space found after comma in function call';
@@ -134,7 +143,7 @@ class FunctionCallArgumentSpacingSniff implements Sniff
                         $space = strlen($tokens[($nextSeparator + 1)]['content']);
                         if ($space > 1) {
                             $error = 'Expected 1 space after comma in function call; %s found';
-                            $data  = array($space);
+                            $data  = [$space];
                             $fix   = $phpcsFile->addFixableError($error, $nextSeparator, 'TooMuchSpaceAfterComma', $data);
                             if ($fix === true) {
                                 $phpcsFile->fixer->replaceToken(($nextSeparator + 1), ' ');
