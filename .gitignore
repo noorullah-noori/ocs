@@ -4,6 +4,15 @@
 /storage/*.key
 /.idea
 /.vagrant
+uploads
+/uploads
+/uploads/*
+/local/storage
+/local/storage/*
+/local/bootstrap
+/local/bootstrap/*
+/local/vendor
+/local/vendor/*
 Homestead.json
 Homestead.yaml
 npm-debug.log
