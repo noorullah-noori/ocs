@@ -11,8 +11,8 @@
            <div class="field">
            <label>{{trans('search.search_in')}}</label>
             <select style="direction:{{$rtl}};" name="type">
-              <option value="word" style="direction:{{$rtl}};">{{trans('search.exact_word')}}</option>
-              <option value="all" selected="selected" style="direction:{{$rtl}};">{{trans('search.all_words')}}</option>
+              <option value="word" selected style="direction:{{$rtl}};">{{trans('search.exact_word')}}</option>
+              <option value="all" style="direction:{{$rtl}};">{{trans('search.all_words')}}</option>
             </select>
           </div>
       </div>

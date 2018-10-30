@@ -60,26 +60,30 @@ class SearchController extends Controller
         }
 
         if($type =='all'){
-            $data = Search::whereIn('type',Session::get('search_in'))
-                ->where(function($query) use($title,$short_desc,$description,$date,$from,$to,$search){
-                    $query->where($title,$search)
-                    ->orWhere($short_desc,$search)
-                    ->orWhere($description,$search)
-                    ->whereBetween($date,[$from,$to]);
-            })
-            ->orderBy("date_".$lang,'desc')
-            ->paginate(10);
+            $keywords = preg_split('/\s+/', $search, -1, PREG_SPLIT_NO_EMPTY); 
+            $data = Search::where(function($query) use($title,$short_desc,$description,$date,$from,$to,$search, $keywords){
+                    foreach($keywords as $keyword) {
+                        $query->where($title,'LIKE','%'.$keyword.'%')
+                        ->orWhere($short_desc,'LIKE','%'.$keyword.'%')
+                        ->orWhere($description,'LIKE','%'.$keyword.'%');
+                    }
+                })
+                ->whereBetween($date,[$from,$to])
+                ->orderBy("date_".$lang,'desc')
+                ->paginate(10);
         }
         else{
-                         $data = Search::whereIn('type',Session::get('search_in'))->where($title,'LIKE','%'.$search.'%')
-                                ->orWhere($short_desc,'LIKE','%'.$search.'%')
-                                ->orWhere($description,'LIKE','%'.$search.'%')
-                                ->whereBetween($date,[$from,$to])
-                                ->select($title,$short_desc,'table_id',$date,'type')
-                                ->orderBy("date_".$lang,'desc')
-                                ->paginate(10);
+            $data = Search::whereIn('type',Session::get('search_in'))
+                ->where($title,'LIKE','%'.$search.'%')
+                ->orWhere($short_desc,'LIKE','%'.$search.'%')
+                ->orWhere($description,'LIKE','%'.$search.'%')
+                ->whereBetween($date,[$from,$to])
+                ->select($title,$short_desc,'table_id',$date,'type')
+                ->orderBy("date_".$lang,'desc')
+                ->paginate(10);
 
         }
+        
        
         $words = DB::table('president')->where('type','word')->orderBy('id','desc')->first();
         $news = Search::take('5')->whereNotNull('title_'.$lang)->where('type','!=','word')->orderBy('date_'.$lang,'desc')->get();

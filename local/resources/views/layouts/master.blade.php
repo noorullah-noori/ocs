@@ -14,7 +14,7 @@
     <div class="ui centered container grid" id="main" style="display: flex">
       @include('include.sidebar')
       <div class="sixteen wide tablet mobile eleven wide computer column">
-        {!! Breadcrumbs::renderIfExists() !!}
+          {!! Breadcrumbs::renderIfExists() !!}
 
         <div class="ui fluid card" style="direction:rtl;float:right;text-align:right;">
           <div class="content" style="text-align:right">
