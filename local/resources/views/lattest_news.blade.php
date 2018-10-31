@@ -3,7 +3,7 @@
 @section('content')
 
    <div class="ui items" style="">
-        @if(sizeof($lattest_news)!=0)
+        @if($lattest_news)
         @foreach($lattest_news as $item)
           <?php 
            $route = '';

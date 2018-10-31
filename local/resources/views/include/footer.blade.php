@@ -37,7 +37,7 @@ use App\Search;
     </div>
     <div class="column" id="footer_news">
       <a href="{{url($lang.'/news')}}" class="ui header title_font footer_title" style="">{{trans('home.latest_news')}}</a>
-      @if (sizeof($news)!=0)
+      @if ($news)
         @foreach($news as $item)
           @if ($item->$title!=null)
           <?php $url =  ($item->table_name=='documents')?asset('uploads/documents_'.$lang.'/'.$item->table_id.'.pdf'):''; ?>
@@ -50,7 +50,7 @@ use App\Search;
     </div>
     <div class="column" id="footer_articles">
       <a href="{{url($lang.'/articles')}}" class="ui header title_font footer_title" style="">{{trans('menu.articles')}}</a>
-      @if (sizeof($articles) != 0)
+      @if ($articles)
         @foreach($articles as $article)
           @if ($article->$title!=null)
             <a href="{{url($lang.'/article_details/'.$article->id)}}" class="ui {{$dir}} floated tiny header body_font footer_link" style="margin:9px 0;width:100%;color:#565454 !important">{{$article->$title}}</a>

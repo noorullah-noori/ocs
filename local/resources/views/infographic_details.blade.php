@@ -5,7 +5,7 @@
     $desc = "desc_".$lang;
     $img = 'image_'.$lang;
   @endphp
-  @if (sizeof($info_details)!=0)
+  @if ($info_details)
         <p class="meta body_font printable">{{$jdate->detailedDate($info_details->$date,$lang)}}</p>
 
         <div style="padding-bottom: 10px" class="printable">

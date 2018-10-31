@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title',trans('menu.reports'))
 @section('content')
-  @if (sizeof($reports)!=0)
+  @if ($reports)
     <div class="ui items">
       @foreach($reports as $item)
         <div class="ui item {{($item == $reports->last())?'no_border':''}}">

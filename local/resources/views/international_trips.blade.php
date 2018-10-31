@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title',trans('menu.international_trips'))
 @section('content')
-  @if (sizeof($international)!=0)
+  @if ($international)
     <div class="ui items">
       @foreach($international as $value)
         <div class="ui item {{($value == $international->last())?'no_border':''}}">

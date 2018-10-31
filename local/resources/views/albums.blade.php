@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title',trans('menu.photo_albums'))
 @section('content')
-  @if (sizeof($albums)!=0)
+  @if ($albums)
     <div class="ui three stackable cards" style="direction:{{$rtl}};">
 
       @foreach($albums as $album)

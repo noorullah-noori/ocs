@@ -5,11 +5,11 @@
     $desc = "desc_".$lang;
     $img_thumb = "image_thumb_".$lang;
   @endphp
-  @if (sizeof($info)!=0)
+  @if ($info)
     <div class="ui three stackable cards infographics" style="direction:{{$rtl}};">
       @foreach($info as $value)
         @php
-        if(sizeof($value->$title)==0)
+        if(!$value->$title)
           continue;
         @endphp
         <div class="ui card">

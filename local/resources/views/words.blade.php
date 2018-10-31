@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title',trans('menu.words'))
 @section('content')
-  @if (sizeof($words_all)!=0)
+  @if ($words_all)
     <div class="ui items">
       @foreach($words_all as $word)
         <div class="ui item {{($word == $words_all->last())?'no_border':''}}">

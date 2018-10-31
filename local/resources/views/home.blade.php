@@ -21,7 +21,7 @@ $icon = '';
     {{-- carousel starts --}}
     <div class="ui stackable segment masthead" style="background-color:#dfdfdf;margin-top:0;padding-bottom:0;">
       <div class="owl-carousel" style="">
-        @if(sizeof($news)!=0)
+        @if($news)
           @foreach($news as $value)
             @if($value->$title!=null)
               <div class="item">
@@ -86,7 +86,7 @@ $icon = '';
             <div class="content" >
               <a href="{{url($lang.'/lattest_news')}}" class="header title_font test" style="font-size: 1.4em !important;{{$lang=='pa'?'line-height: 1.6 !important':''}}">{{trans('home.latest_news')}}</a>
               <div class="ui items">
-                @if(sizeof($lattest_news)!=0)
+                @if($lattest_news)
                   @foreach($lattest_news as $item)
                     <?php
                     $route = '';
@@ -159,7 +159,7 @@ $icon = '';
             <div class="content" >
               <a href="{{url($lang.'/articles')}}" class="header title_font test" style="font-size: 1.4em !important;{{$lang=='pa'?'line-height: 1.6 !important':''}}">{{trans('home.articles')}}</a>
               <div class="ui items" style="margin-top:11px;">
-              @if (sizeof($articles)!=0)
+              @if ($articles)
                 @foreach($articles as $item)
                 @if ($item->$title=='')
                   @php
@@ -227,7 +227,7 @@ $icon = '';
             <div class="content" >
               <a href="{{url($lang.'/documents')}}" class="header title_font test" style="">{{trans('menu.reports_and_documents')}}</a>
               <div class="ui unstackable items" style="margin-top: 11px !important">
-                @if(sizeof($documents)!=0)
+                @if($documents)
                   @foreach($documents as $document)
                     @if($document->$title!=null)
                       <?php
@@ -269,7 +269,7 @@ $icon = '';
             <div class="content" style="border:0;!">
               <a href="{{url($lang.'/videos')}}" class="header title_font test" style="">{{trans('home.videos')}}</a>
               <div class="ui stackable grid" style="margin-top:11px;">
-                @if (sizeof($videos))
+                @if ($videos)
                   @foreach($videos as $video)
                     @if($video->$title!=null)
                       <div class="row" style="">

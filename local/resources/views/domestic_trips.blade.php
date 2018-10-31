@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title',trans('menu.domestic_trips'))
 @section('content')
-  @if (sizeof($domestic)!=0)
+  @if ($domestic)
     <div class="ui items">
       @foreach($domestic as $value)
         <div class="ui item {{($value == $domestic->last())?'no_border':''}}">

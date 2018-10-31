@@ -1,4 +1,4 @@
-@if((sizeof($files) > 0) || (sizeof($directories) > 0))
+@if($files || $directories)
 <table class="table table-responsive table-condensed table-striped hidden-xs table-list-view">
   <thead>
     <th style='width:50%;'>{{ Lang::get('laravel-filemanager::lfm.title-item') }}</th>

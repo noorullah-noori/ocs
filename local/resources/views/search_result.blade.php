@@ -5,7 +5,7 @@
 @php
 @endphp
   <div class="ui items" style="">
-    @if(sizeof($data)!=0)
+    @if($data)
       @foreach($data as $value)
         <div class="item {{($value==$data->last())?'no_border':''}}">
           <div class="content">

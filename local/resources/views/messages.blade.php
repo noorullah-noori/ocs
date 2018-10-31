@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title',trans('menu.messages'))
 @section('content')
-  @if (sizeof($messages)!=0)
+  @if ($messages)
     <div class="ui items">
       @foreach($messages as $message)
         <div class="ui item {{($message == $messages->last())?'no_border':''}}">

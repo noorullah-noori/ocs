@@ -27,7 +27,7 @@ else{
           <a class="btn btn-{{($lang=='pa'?'success':'default')}}" href="javascript:void(0)" onclick="show('pa')">Pashto</a>
         </div>
 <div class="" style="margin:10px;">
-  @if(sizeof($ocs)==0 && Session::get('role')!='editor')
+  @if(!$ocs && Session::get('role')!='editor')
    <a class="btn btn-default pull-left" href="javascript:void(0)" onclick="create('{{$lang}}')" style="margin-bottom: 10px;">Create</a>
     @endif
 </div>

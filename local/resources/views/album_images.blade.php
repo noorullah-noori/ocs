@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title',$album->$title)
 @section('content')
-  @if (sizeof($images)!=0)
+  @if ($images)
     <div class="ui three doubling stackable cards" style="direction:{{$rtl}};">
 
       @foreach($images as $image)

@@ -5,7 +5,7 @@
       <div class="header title_font test" style="text-align:{{$dir}};margin-bottom:11px;padding-left:0;font-size: 1.5em !important;">
       {{trans('home.president_word')}}
     </div>
-      @if (sizeof($word)!=0)
+      @if ($word)
         <div class="image"><img style="width:100%;" src="{{asset('uploads/word/'.$word->image)}}" alt=""></div>
         <div class="description body_font" style="text-align:justify;margin-top:10px;padding-bottom:10px;" dir="rtl">{{$word->$short_desc}}</div>
       @endif
@@ -16,10 +16,10 @@
       <a href="{{url($lang.'/lattest_news')}}" class="header title_font test" style="text-align:{{$dir}};margin-bottom:11px;">
       {{trans('home.latest_news')}}
     </a>
-      @if (sizeof($news)!=0)
+      @if ($news)
         @foreach($news as $item)
           @php
-          if(sizeof($item->$title)==0)
+          if(!$item->$title)
             continue;
           @endphp
           <?php $route =  ($item->table_name=='documents')?asset('uploads/documents_'.$lang.'/'.$item->table_id.'.pdf'):''; ?>

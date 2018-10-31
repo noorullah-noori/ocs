@@ -5,7 +5,7 @@
     $documents_path = 'documents_'.$lang;
     $pdf = 'pdf_'.$lang;
   @endphp
-  @if (sizeof($documents)!=0)
+  @if ($documents)
     <div class="ui items">
       @foreach($documents as $item)
         <div class="ui item {{($item == $documents->last())?'no_border':''}}">
