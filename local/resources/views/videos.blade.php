@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title',trans('menu.videos'))
 @section('content')
-  @if (sizeof($videos)!=0)
+  @if ($videos)
     <div class="ui two stackable cards" style="direction:{{$rtl}};">
 
       @foreach($videos as $video)
