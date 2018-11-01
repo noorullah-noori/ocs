@@ -41,7 +41,7 @@ Route::group(['middleware' => ['change_lang']],function(){
 	
 Route::get('/', function () {
 	$ids = Quotes::where('id','>',0)->pluck('id')->toArray();
-	if(sizeof($ids)==0){
+	if(!$ids){
 		$quotes = null;
 		return view('index')->with('quotes',$quotes);
 	}

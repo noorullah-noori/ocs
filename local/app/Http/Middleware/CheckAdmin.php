@@ -20,7 +20,7 @@ class CheckAdmin
     {
       $email = Session::get('email');
       $user = User::where('email',$email)->first();
-      if(sizeof($user)>0 && $user->role=='admin'){
+      if($user && $user->role=='admin'){
         return $next($request);
       }
       Log::info($email."Unauthorized access to the admin pages ".date('l jS \of F Y h:i:s A'));

@@ -261,7 +261,7 @@ class AlbumController extends Controller
 
         $album = Album::findOrFail($id);
         $album_images = DB::table('album_image')->where('album_id',$id)->get();
-        if(sizeof($album_images)>0){
+        if($album_images){
           foreach ($album_images as $value) {
               File::delete('uploads/albumImage/'.$value->image);
               $album_image = AlbumImage::findOrFail($value->id);

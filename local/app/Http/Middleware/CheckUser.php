@@ -21,7 +21,7 @@ class CheckUser
       
       $email = Session::get('email');
       $user = User::where('email',$email)->first();
-      if(sizeof($user)>0){
+      if($user){
         return $next($request);
       }
       Log::info($email." login attempt failed on ".date('l jS \of F Y h:i:s A'));
