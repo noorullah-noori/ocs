@@ -116,7 +116,8 @@ $icon = '';
                             $img = asset('uploads/'.$item->type.'/default.jpg');
                         }
                         else if($item->type == 'infographic'){
-                            $img = asset('uploads/infographics/'.$lang.'/'.$item->image_thumb);
+                            $image_thumb = ($lang!='en' ? 'image_thumb'.'_'.$lang : 'image_thumb');
+                            $img = asset('uploads/infographics/'.$lang.'/'.$item->$image_thumb);
                         }
                         else{
                           $img = asset($item->image_thumb);

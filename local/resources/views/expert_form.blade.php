@@ -175,6 +175,14 @@
            </div>
          </div>
        </div>
+           <div class="row" style="direction: {{$rtl}}">
+        <div class="eight wide column">
+ 
+      <div class="g-recaptcha" data-sitekey="6LclTIQUAAAAAIh7ztqz9mryxNAgSC82qYXg4gRH">
+          
+      </div>
+
+       </div>
        </div>
 
      </div>

@@ -11,3 +11,5 @@
 {{-- favicon dem --}}
 <link rel="icon" type="image/png" href="{{asset('favicon-32x32.png')}}" sizes="32x32" />
 @stack('custom-css-links')
+<script src='https://www.google.com/recaptcha/api.js'></script>
+

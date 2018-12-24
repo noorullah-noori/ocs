@@ -1,8 +1,148 @@
 @extends('layouts.master')
-@section('title',trans('menu.ocs'))
+@section('title',trans('menu.advanced_search'))
 @section('content')
 
-  <form class="ui form" method="GET" action="{{url($lang.'/get_search')}}">
+<form class="ui form" method="GET" action="{{url($lang.'/get_search')}}">
+  <label class="ui header title_font"> : {{trans('search.search')}}</label>
+    <div class="field">
+      <label>{{trans('search.search')}}*</label>
+      <input type="text" name="search" class="body_font" placeholder="{{trans('search.search')}}" required="required">
+    </div>
+
+    <div class="field">
+      <label>{{trans('search.search_in')}}</label>
+      <select class="ui fluid dropdown body_font" name="type" id="">
+        <option value="word" selected style="direction:{{$rtl}};">{{trans('search.exact_word')}}</option>
+        <option value="all" style="direction:{{$rtl}};">{{trans('search.all_words')}}</option>
+      </select>
+    </div>
+
+    <label class="ui header title_font"> : {{trans('search.search_date')}}</label>
+    <div class="two fields" style="direction: {{$rtl}}">
+        <div class="field">
+          <label>{{trans('search.from')}}</label>
+          <input class="{{$lang=='en' ? '' : 'date_dr' }}" type="{{$lang=='en' ? 'date' : 'text'}}" name="from">
+        </div>
+        <div class="field">
+          <label>{{trans('search.to')}}</label>
+          <input class="{{$lang=='en' ? '' : 'date_dr' }}" type="{{$lang=='en' ? 'date' : 'text'}}" name="to">
+        </div>
+    </div>
+
+    <label class="ui header"> : {{trans('search.search_inside')}}</label>
+    {{-- <div class="three fields" >
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="decree">
+            <label>{{trans('menu.decrees')}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="orders">
+            <label>{{trans('menu.orders')}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="statements">
+            <label>{{trans('menu.statements')}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="mesasages">
+            <label>{{trans('menu.messages')}}</label>
+          </div>
+        </div>
+    </div> --}}
+    <div class="equal width fields">
+      <div class="field">
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="decree">
+            <label>{{trans('menu.decrees')}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="orders">
+            <label>{{trans('menu.orders')}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="statements">
+            <label>{{trans('menu.statements')}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="mesasages">
+            <label>{{trans('menu.messages')}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="search_in[]" checked="checked" value="words">
+              <label>{{trans('menu.words')}}</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="search_in[]" checked="checked" value="domestic">
+              {{-- <input type="checkbox" name="search_in[]" style="display: none" checked="checked" value="international"> --}}
+              <label>{{trans('menu.trips')}}</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="search_in[]" checked="checked" value="news">
+              <label>{{trans('menu.news')}}</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" name="search_in[]" checked="checked" value="report">
+              <label>{{trans('menu.reports')}}</label>
+            </div>
+          </div>
+      </div>
+      <div class="field">
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="articles">
+            <label>{{trans('menu.articles')}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="infographic">
+            <label>{{trans('menu.infographics')}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="album">
+            <label>{{trans('menu.photo_albums')}}</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="search_in[]" checked="checked" value="video">
+            <label>{{trans('menu.videos')}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </form>
+
+  {{-- <form class="ui form" method="GET" action="{{url($lang.'/get_search')}}">
       <div class="field">
           <div class="field">
           <label>{{trans('search.search')}}*</label>
@@ -111,7 +251,7 @@
     </div>
     {{csrf_field()}}
   <button class="ui button" type="submit">{{trans('search.search')}}</button>
-</form>
+</form> --}}
 @endsection
 @push('custom-css')
   <style>

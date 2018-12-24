@@ -17,7 +17,7 @@
         $title = 'title_'.$lang;
         $decree = App\President::find($id);
         $breadcrumbs->parent('decrees');
-        $breadcrumbs->push($decree->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
     // Order and order details
@@ -32,7 +32,7 @@
         $title = 'title_'.$lang;
         $order = App\President::find($id);
         $breadcrumbs->parent('orders');
-        $breadcrumbs->push($order->$title, '#');
+        $breadcrumbs->push('', '#');
       });
     
       // Statement and Statement details
@@ -46,7 +46,7 @@
         $title = 'title_'.$lang;
         $order = App\President::find($id);
         $breadcrumbs->parent('statements');
-        $breadcrumbs->push($order->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
     // Messages and Messages details
@@ -60,7 +60,7 @@
         $title = 'title_'.$lang;
         $order = App\President::find($id);
         $breadcrumbs->parent('messages');
-        $breadcrumbs->push($order->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
       // Words and Words details
@@ -87,7 +87,7 @@
           $title = 'title_'.$lang;
           $trip = App\Trip::find($id);
           $breadcrumbs->parent('international_trips');
-          $breadcrumbs->push($trip->$title, '#');
+          $breadcrumbs->push('', '#');
         });  
       
       Breadcrumbs::register('domestic_trips', function($breadcrumbs) {
@@ -100,7 +100,7 @@
           $title = 'title_'.$lang;
           $trip = App\Trip::find($id);
           $breadcrumbs->parent('domestic_trips');
-          $breadcrumbs->push($trip->$title, '#');
+          $breadcrumbs->push('', '#');
         });
     
     // Biography
@@ -124,7 +124,7 @@
         $title = 'title_'.$lang;
         $trip = App\Media::find($id);
         $breadcrumbs->parent('reports');
-        $breadcrumbs->push($trip->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
     Breadcrumbs::register('news', function($breadcrumbs) {
@@ -137,7 +137,7 @@
         $title = 'title_'.$lang;
         $trip = App\Media::find($id);
         $breadcrumbs->parent('news');
-        $breadcrumbs->push($trip->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
     Breadcrumbs::register('articles', function($breadcrumbs) {
@@ -150,7 +150,7 @@
         $title = 'title_'.$lang;
         $trip = App\Media::find($id);
         $breadcrumbs->parent('articles');
-        $breadcrumbs->push($trip->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
     Breadcrumbs::register('infographics', function($breadcrumbs) {
@@ -163,7 +163,7 @@
         $title = 'title_'.$lang;
         $infographic = App\InfoGraphic::find($id);
         $breadcrumbs->parent('infographics');
-        $breadcrumbs->push($infographic->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
     Breadcrumbs::register('photo_albums', function($breadcrumbs) {
@@ -176,7 +176,7 @@
         $title = 'title_'.$lang;
         $album_images = App\Album::find($id);
         $breadcrumbs->parent('photo_albums');
-        $breadcrumbs->push($album_images->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
     Breadcrumbs::register('videos', function($breadcrumbs) {
@@ -189,7 +189,7 @@
         $title = 'title_'.$lang;
         $album_images = App\Video::find($id);
         $breadcrumbs->parent('photo_albums');
-        $breadcrumbs->push($album_images->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
     Breadcrumbs::register('documents', function($breadcrumbs) {
@@ -208,7 +208,7 @@
         $title = 'title_'.$lang;
         $link = App\Links::find($id);
         $breadcrumbs->parent('links');
-        $breadcrumbs->push($link->$title, '#');
+        $breadcrumbs->push('', '#');
       });
 
     // About Us

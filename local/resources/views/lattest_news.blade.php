@@ -29,6 +29,10 @@
               else if($item->table_name == 'videos'){
                 $img = "https://img.youtube.com/vi/$item->image_thumb/hqdefault.jpg";
               }
+              else if($item->type == 'infographic'){
+                  $image_thumb = ($lang!='en' ? 'image_thumb'.'_'.$lang : 'image_thumb');
+                  $img = asset('uploads/infographics/'.$lang.'/'.$item->$image_thumb);
+              }
                else if($item->type == 'decree' || $item->type=='order'){
                   $img = asset('uploads/'.$item->type.'/default.jpg');
               }

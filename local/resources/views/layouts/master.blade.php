@@ -36,6 +36,28 @@
           </div>
         </div>
       </div>
+      @if(isset($final))
+        @if($final!=null && $news_details->$title!='')
+          <div class="ui fluid card">
+            <div class="content">
+            <h3 class="title_font" style="direction:{{$rtl}};">{{trans('home.similar')}} </h3>
+            <div class="ui three stackable cards" style="text-align:right;direction:{{$rtl}}">
+              @foreach($final as $item)
+                <div class="ui card">
+                  <div class="content">
+                    <div class="ui image" style="height: 103px;">
+                      <img src="{{asset('uploads/news/'.$item->image)}}" style="height: 100%" alt="">
+                    </div>
+                    <a href="{{url($lang.'/news_details/'.$item->id)}}" class="title_font" style="direction: {{$rtl}} !important;">{{$item->$title}}</a>
+                  </div>
+                </div>
+              @endforeach
+            </div>
+
+            </div>
+          </div>
+        @endif
+      @endif
     </div>
   </div>
 

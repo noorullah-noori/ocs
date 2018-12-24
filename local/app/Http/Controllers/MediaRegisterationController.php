@@ -20,6 +20,11 @@ class MediaRegisterationController extends Controller {
 
 
   public function store_media_form(Request $request) {
+      
+      if(!$request->input('g-recaptcha-response')) {
+        $request->session()->flash('failure', 'Form Submission Problem!');
+        return redirect()->back();
+      }
 
       $this->validate($request,[
         'name'=>'required',
@@ -43,6 +48,11 @@ class MediaRegisterationController extends Controller {
         'd_facebook'=>'required',
         'd_twitter'=>'required',
       ]);
+
+
+
+
+
       $media = new MediaRegisteration();
       $media->name = $request->input('name');
       $media->license_number = $request->input('license_number');
@@ -165,7 +175,13 @@ class MediaRegisterationController extends Controller {
       }
 
   public function store_journalist_form(Request $request) {
-	$lang = Config::get('app.locale');
+  $lang = Config::get('app.locale');
+
+    if(!$request->input('g-recaptcha-response')) {
+      $request->session()->flash('failure', 'Form Submission Problem!');
+      return redirect()->back();
+    }
+
       $this->validate($request,[
         'name'=>'required',
         'last_name'=>'required',
@@ -244,7 +260,12 @@ class MediaRegisterationController extends Controller {
   }
 
   public function store_expert_form(Request $request) {
-	  $lang = Config::get('app.locale');
+    $lang = Config::get('app.locale');
+    
+    if(!$request->input('g-recaptcha-response')) {
+      $request->session()->flash('failure', 'Form Submission Problem!');
+      return redirect()->back();
+    }
       $this->validate($request,[
         'name'=>'required',
         'last_name'=>'required',

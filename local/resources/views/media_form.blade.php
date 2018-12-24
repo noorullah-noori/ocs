@@ -19,25 +19,25 @@
        <div class="sixteen wide mobile four wide tablet four wide computer column">
        <label>{{trans('subscription.media_name')}}*</label>
          <div class="field">
-           <input type="text" class="body_font" name="name" placeholder="{{trans('subscription.media_name')}}" required="required">
+          <input type="text" class="body_font" value="{{old('name')}}" name="name" placeholder="{{trans('subscription.media_name')}}" required="required">
          </div>
        </div>
        <div class="sixteen wide mobile four wide tablet four wide computer column">
          <div class="field">
          <label>{{trans('subscription.license_number')}}*</label>
-           <input type="text" class="body_font" name="license_number" placeholder="{{trans('subscription.license_number')}}" required="required">
+           <input type="text" class="body_font"  value="{{old('license_number')}}" name="license_number" placeholder="{{trans('subscription.license_number')}}" required="required">
          </div>
        </div>
        <div class="sixteen wide mobile four wide tablet four wide computer column">
          <div class="field">
          <label>{{trans('subscription.license_issue_date')}}*</label>
-           <input type="text" <?php echo ($lang!='en')?'date_dr':'onfocus=(this.type="date")'; ?> class="body_font <?php echo ($lang!='en')?'date_dr':''; ?>" name="license_issue_date" placeholder="{{trans('subscription.license_issue_date')}}" required="required">
+           <input type="text" <?php echo ($lang!='en')?'date_dr':'onfocus=(this.type="date")'; ?> class="body_font <?php echo ($lang!='en')?'date_dr':''; ?>" value="{{old('license_issue_date')}}" name="license_issue_date" placeholder="{{trans('subscription.license_issue_date')}}" required="required">
          </div>
        </div>
        <div class="sixteen wide mobile four wide tablet four wide computer column">
          <div class="field">
          <label>{{trans('subscription.office_starting_date')}}*</label>
-           <input type="text" <?php echo ($lang!='en')?'date_dr':'onfocus=(this.type="date")'; ?> class="body_font <?php echo ($lang!='en')?'date_dr':''; ?>" name="office_starting_date" placeholder="{{trans('subscription.office_starting_date')}}" required="required">
+           <input type="text" <?php echo ($lang!='en')?'date_dr':'onfocus=(this.type="date")'; ?> class="body_font <?php echo ($lang!='en')?'date_dr':''; ?>" name="office_starting_date" value="{{old('office_starting_date')}}" placeholder="{{trans('subscription.office_starting_date')}}" required="required">
          </div>
        </div>
      </div>
@@ -80,7 +80,7 @@
        <div class="field column">
        <label>{{trans('subscription.coverage_area')}}*</label>
          <div class="ui fluid multiple search selection dropdown" id="coverage_area">
-           <input name="coverage_area"  tabindex="-1" class="unfocusable-element" type="hidden" required="required">
+            <input name="coverage_area" value="{{old('coverage_area')}}"  tabindex="-1" class="unfocusable-element" type="hidden" required="required">
            <div class="default text body_font">{{trans('subscription.coverage_area_desc')}}</div>
          </div>
        </div>
@@ -90,7 +90,7 @@
        <div class="field column">
        <label>{{trans('subscription.type_of_broadcasting')}}*</label>
          <div class="ui fluid multiple search selection dropdown" id="type_of_broadcasting">
-           <input name="type_of_broadcasting"  tabindex="-1" class="unfocusable-element" type="hidden" required="required">
+           <input name="type_of_broadcasting" value="{{old('type_of_broadcasting')}}"  tabindex="-1" class="unfocusable-element" type="hidden" required="required">
            <div class="default text body_font">{{trans('subscription.type_of_broadcasting_desc')}}</div>
          </div>
        </div>
@@ -100,7 +100,7 @@
        <div class="field column">
        <label>{{trans('subscription.audience_group')}}</label>
          <div class="ui fluid multiple search selection dropdown" id="audience_group">
-           <input name="audience_group"  tabindex="-1" class="unfocusable-element" type="hidden">
+           <input name="audience_group" value="{{old('audience_group')}}"  tabindex="-1" class="unfocusable-element" type="hidden">
            <div class="default text body_font">{{trans('subscription.audience_group_desc')}}</div>
          </div>
        </div>
@@ -110,7 +110,7 @@
        <div class="field column">
        <label>{{trans('subscription.language_of_broadcasting')}}*</label>
          <div class="ui fluid multiple search selection dropdown" id="language_of_broadcasting">
-           <input name="language_of_broadcasting"  tabindex="-1" class="unfocusable-element" type="hidden">
+           <input name="language_of_broadcasting" value="{{old('language_of_broadcasting')}}"  tabindex="-1" class="unfocusable-element" type="hidden">
            <div class="default text body_font">{{trans('subscription.language_of_broadcasting')}}</div>
          </div>
        </div>
@@ -120,7 +120,7 @@
        <div class="field column">
        <label>{{trans('subscription.address')}}*</label>
          <div class="ui fluid" id="office_address">
-           <input name="official_address" type="text" placeholder="{{trans('subscription.address')}}">
+           <input name="official_address" value="{{old('official_address')}}" type="text" placeholder="{{trans('subscription.address')}}">
          </div>
        </div>
      </div>
@@ -130,19 +130,19 @@
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.email')}} 1*</label>
-           <input type="email" class="body_font" name="email1" placeholder="{{trans('subscription.email')}} 1">
+           <input type="email" class="body_font" name="email1" value="{{old('email1')}}" placeholder="{{trans('subscription.email')}} 1">
          </div>
        </div>
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.email')}} 2</label>
-           <input type="email" class="body_font" name="email2" placeholder="{{trans('subscription.email')}} 2">
+           <input type="email" class="body_font" name="email2" value="{{old('email2')}}" placeholder="{{trans('subscription.email')}} 2">
          </div>
        </div>
        <div class="six wide computer six wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.email')}} 3</label>
-           <input type="email" class="body_font" name="email3" placeholder="{{trans('subscription.email')}} 3">
+           <input type="email" class="body_font" name="email3" value="{{old('email3')}}" placeholder="{{trans('subscription.email')}} 3">
          </div>
        </div>
      </div>
@@ -152,19 +152,19 @@
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.contact')}} 1*</label>
-           <input type="text" class="body_font" name="phone1" placeholder="{{trans('subscription.contact')}} 1">
+           <input type="text" class="body_font" name="phone1" value="{{old('phone1')}}" placeholder="{{trans('subscription.contact')}} 1">
          </div>
        </div>
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.contact')}} 2</label>
-           <input type="text" class="body_font" name="phone2" placeholder="{{trans('subscription.contact')}} 2">
+           <input type="text" class="body_font" name="phone2" value="{{old('phone2')}}" placeholder="{{trans('subscription.contact')}} 2">
          </div>
        </div>
        <div class="six wide computer six wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.contact')}} 3</label>
-           <input type="text" class="body_font" name="phone3" placeholder="{{trans('subscription.contact')}} 3">
+           <input type="text" class="body_font" name="phone3" value="{{old('phone3')}}" placeholder="{{trans('subscription.contact')}} 3">
          </div>
        </div>
      </div>
@@ -174,19 +174,19 @@
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.website')}}</label>
-           <input type="text" class="body_font" name="website" placeholder="{{trans('subscription.website')}}">
+           <input type="text" class="body_font" name="website" value="{{old('website')}}" placeholder="{{trans('subscription.website')}}">
          </div>
        </div>
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.facebook')}}</label>
-           <input type="text" class="body_font" name="facebook" placeholder="{{trans('subscription.facebook')}}">
+           <input type="text" class="body_font" name="facebook" value="{{old('facebook')}}" placeholder="{{trans('subscription.facebook')}}">
          </div>
        </div>
        <div class="six wide computer six wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.twitter')}}</label>
-           <input type="text" class="body_font" name="twitter" placeholder="{{trans('subscription.twitter')}}">
+           <input type="text" class="body_font" name="twitter" value="{{old('twitter')}}" placeholder="{{trans('subscription.twitter')}}">
          </div>
        </div>
      </div>
@@ -196,19 +196,19 @@
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.name')}}</label>
-           <input type="text" class="body_font" name="d_name" placeholder="{{trans('subscription.name')}}">
+           <input type="text" class="body_font" name="d_name" value="{{old('d_name')}}" placeholder="{{trans('subscription.name')}}">
          </div>
        </div>
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.email')}}</label>
-           <input type="email" class="body_font" name="d_email" placeholder="{{trans('subscription.email')}}">
+           <input type="email" class="body_font" name="d_email" value="{{old('d_email')}}" placeholder="{{trans('subscription.email')}}">
          </div>
        </div>
        <div class="six wide computer six wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.contact_number')}}</label>
-           <input type="text" class="body_font" name="d_phone" placeholder="{{trans('subscription.contact_number')}}">
+           <input type="text" class="body_font" name="d_phone" value="{{old('d_phone')}}" placeholder="{{trans('subscription.contact_number')}}">
          </div>
        </div>
      </div>
@@ -216,13 +216,13 @@
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.facebook')}}</label>
-           <input type="text" class="body_font" name="d_facebook" placeholder="{{trans('subscription.facebook')}}">
+           <input type="text" class="body_font" name="d_facebook" value="{{old('d_facebook')}}" placeholder="{{trans('subscription.facebook')}}">
          </div>
        </div>
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.twitter')}}</label>
-           <input type="text" class="body_font" name="d_twitter" placeholder="{{trans('subscription.twitter')}}">
+           <input type="text" class="body_font" name="d_twitter" value="{{old('d_twitter')}}" placeholder="{{trans('subscription.twitter')}}">
          </div>
        </div>
      </div>
@@ -233,19 +233,19 @@
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.name')}}</label>
-           <input type="text" class="body_font" name="r_name" placeholder="{{trans('subscription.name')}}">
+           <input type="text" class="body_font" name="r_name" value="{{old('r_name')}}" placeholder="{{trans('subscription.name')}}">
          </div>
        </div>
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.email')}}</label>
-           <input type="email" class="body_font" name="r_email" placeholder="{{trans('subscription.email')}}">
+           <input type="email" class="body_font" name="r_email" value="{{old('r_email')}}" placeholder="{{trans('subscription.email')}}">
          </div>
        </div>
        <div class="sixfive wide computer five wide tablet sixteen wide mobile column wide computer sixfive wide computer five wide tablet sixteen wide mobile column wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.contact')}}</label>
-           <input type="text" class="body_font" name="r_phone" placeholder="{{trans('subscription.contact')}}">
+           <input type="text" class="body_font" name="r_phone" value="{{old('r_phone')}}" placeholder="{{trans('subscription.contact')}}">
          </div>
        </div>
      </div>
@@ -253,13 +253,13 @@
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.facebook')}}</label>
-           <input type="text" class="body_font" name="r_facebook" placeholder="{{trans('subscription.facebook')}}">
+           <input type="text" class="body_font" name="r_facebook" value="{{old('r_facebook')}}" placeholder="{{trans('subscription.facebook')}}">
          </div>
        </div>
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.twitter')}}</label>
-           <input type="text" class="body_font" name="r_twitter" placeholder="{{trans('subscription.twitter')}}">
+           <input type="text" class="body_font" name="r_twitter" value="{{old('r_twitter')}}" placeholder="{{trans('subscription.twitter')}}">
          </div>
        </div>
      </div>
@@ -269,19 +269,19 @@
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.name')}}</label>
-           <input type="text" class="body_font" name="s_name" placeholder="{{trans('subscription.name')}}">
+           <input type="text" class="body_font" name="s_name" value="{{old('s_name')}}" placeholder="{{trans('subscription.name')}}">
          </div>
        </div>
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.email')}}</label>
-           <input type="email" class="body_font" name="s_email" placeholder="{{trans('subscription.email')}}">
+           <input type="email" class="body_font" name="s_email" value="{{old('s_email')}}" placeholder="{{trans('subscription.email')}}">
          </div>
        </div>
        <div class="sixfive wide computer five wide tablet sixteen wide mobile column wide computer sixfive wide computer five wide tablet sixteen wide mobile column wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.contact')}}</label>
-           <input type="text" class="body_font" name="s_phone" placeholder="{{trans('subscription.contact')}}">
+           <input type="text" class="body_font" name="s_phone" value="{{old('s_phone')}}" placeholder="{{trans('subscription.contact')}}">
          </div>
        </div>
      </div>
@@ -289,13 +289,13 @@
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.facebook')}}</label>
-           <input type="text" class="body_font" name="s_facebook" placeholder="{{trans('subscription.facebook')}}">
+           <input type="text" class="body_font" name="s_facebook" value="{{old('s_facebook')}}" placeholder="{{trans('subscription.facebook')}}">
          </div>
        </div>
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.twitter')}}</label>
-           <input type="text" class="body_font" name="s_twitter" placeholder="{{trans('subscription.twitter')}}">
+           <input type="text" class="body_font" name="s_twitter" value="{{old('s_twitter')}}" placeholder="{{trans('subscription.twitter')}}">
          </div>
        </div>
      </div>
@@ -305,19 +305,19 @@
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.name')}}</label>
-           <input type="text" class="body_font" name="j_name" placeholder="{{trans('subscription.name')}}">
+           <input type="text" class="body_font" name="j_name" value="{{old('j_name')}}" placeholder="{{trans('subscription.name')}}">
          </div>
        </div>
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.email')}}</label>
-           <input type="email" class="body_font" name="j_email" placeholder="{{trans('subscription.email')}}">
+           <input type="email" class="body_font" name="j_email" value="{{old('j_email')}}" placeholder="{{trans('subscription.email')}}">
          </div>
        </div>
        <div class="sixfive wide computer five wide tablet sixteen wide mobile column wide computer sixfive wide computer five wide tablet sixteen wide mobile column wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.contact')}}</label>
-           <input type="text" class="body_font" name="j_phone" placeholder="{{trans('subscription.contact')}}">
+           <input type="text" class="body_font" name="j_phone" value="{{old('j_phone')}}" placeholder="{{trans('subscription.contact')}}">
          </div>
        </div>
      </div>
@@ -325,13 +325,13 @@
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.facebook')}}</label>
-           <input type="text" class="body_font" name="j_facebook" placeholder="{{trans('subscription.facebook')}}">
+           <input type="text" class="body_font" name="j_facebook" value="{{old('j_facebook')}}" placeholder="{{trans('subscription.facebook')}}">
          </div>
        </div>
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.twitter')}}</label>
-           <input type="text" class="body_font" name="j_twitter" placeholder="{{trans('subscription.twitter')}}">
+           <input type="text" class="body_font" name="j_twitter" value="{{old('j_twitter')}}" placeholder="{{trans('subscription.twitter')}}">
          </div>
        </div>
      </div>
@@ -342,19 +342,19 @@
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.name')}}</label>
-           <input type="text" class="body_font" name="j1_name" placeholder="{{trans('subscription.name')}}">
+           <input type="text" class="body_font" name="j1_name" value="{{old('j1_name')}}" placeholder="{{trans('subscription.name')}}">
          </div>
        </div>
        <div class="five wide computer five wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.email')}}</label>
-           <input type="email" class="body_font" name="j1_email" placeholder="{{trans('subscription.email')}}">
+           <input type="email" class="body_font" name="j1_email" value="{{old('j1_email')}}" placeholder="{{trans('subscription.email')}}">
          </div>
        </div>
        <div class="six wide computer six wide tablet sixteen wide mobile column">
          <div class="field">
          <label>{{trans('subscription.contact')}}</label>
-           <input type="text" class="body_font" name="j1_phone" placeholder="{{trans('subscription.contact')}}">
+           <input type="text" class="body_font" name="j1_phone" value="{{old('j1_phone')}}" placeholder="{{trans('subscription.contact')}}">
          </div>
        </div>
      </div>
@@ -362,15 +362,20 @@
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.facebook')}}</label>
-           <input type="text" class="body_font" name="j1_facebook" placeholder="{{trans('subscription.facebook')}}">
+           <input type="text" class="body_font" name="j1_facebook" value="{{old('j1_facebook')}}" placeholder="{{trans('subscription.facebook')}}">
          </div>
        </div>
        <div class="eight wide column">
          <div class="field">
          <label>{{trans('subscription.twitter')}}</label>
-           <input type="text" class="body_font" name="j1_twitter" placeholder="{{trans('subscription.twitter')}}">
+           <input type="text" class="body_font" name="j1_twitter" value="{{old('j1_twitter')}}" placeholder="{{trans('subscription.twitter')}}">
          </div>
        </div>
+     </div>
+      <div class="row" style="direction: {{$rtl}}">
+       <div class="eight wide column">
+        <div class="g-recaptcha" data-sitekey="6LclTIQUAAAAAIh7ztqz9mryxNAgSC82qYXg4gRH"></div>
+
      </div>
 
    </div>
@@ -381,6 +386,8 @@
        {{trans('subscription.submit')}}
      </button>
    </div>
+
+
    {{csrf_field()}}
   </form>
 @endsection
