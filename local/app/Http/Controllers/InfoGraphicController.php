@@ -56,10 +56,10 @@ class InfoGraphicController extends Controller
         $img_thumb = "image_thumb_".$lang;
 
         if($lang != 'en') {
-          $storing_image_thumb = "image_thumb_".$lang;
+          $image_thumb_search = "image_thumb_".$lang;
         }
         else {
-          $storing_image_thumb = "image_thumb";
+          $image_thumb_search = "image_thumb";
         }
 
         // validation
@@ -146,11 +146,11 @@ class InfoGraphicController extends Controller
               else{
                 $search->date_en = $request->$date;
               }
-              
+
               $search->table_name = 'infographics';
               $search->type = 'infographic';
               $search->table_id = $id;
-              $search->$storing_image_thumb = $image_thumb_name;
+              $search->$image_thumb_search = $image_thumb_name;
               $search->save();
             }
             // Log::info($id." InfoGraphics record created by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
@@ -197,10 +197,10 @@ class InfoGraphicController extends Controller
       $image = 'image_'.$lang;
       $image_thumb = "image_thumb_".$lang;
       if($lang != 'en') {
-        $storing_image_thumb = "image_thumb_".$lang;
+        $image_thumb_search = "image_thumb_".$lang;
       }
       else {
-        $storing_image_thumb = "image_thumb";
+        $image_thumb_search = "image_thumb";
       }
 
       // validation
@@ -217,7 +217,7 @@ class InfoGraphicController extends Controller
       $infographic->$title = $search_object->$title = $request->$title;
 
       $infographic->$date = $search_object->$date = $request->$date;
-      
+
       if($lang != 'en') {
         $infographic->date_dr = $infographic->date_pa = $request->$date;
 
@@ -225,145 +225,91 @@ class InfoGraphicController extends Controller
       }
 
       // storing data into the relevent search object
-      
-      // $search_object
-      
 
-      if($request->file()) {
+      // $search_object
+
+
+      // if($request->file()) {
         // if original image was selected
+        // return $request->all();
+        if($request->$image_thumb) {
+          $path = 'uploads/infographics/'.$lang."/";
+
+          $this->validate($request, [
+            $image_thumb => 'mimes:jpg,png,jpeg',
+          ]);
+
+          // make image
+          // $image = Image::make($request->$image);
+          $image_thumb_obj = Image::make($request->$image_thumb);
+
+
+          //image names i.e. (image and image_thumb)
+          $image_thumb_name = $id.'_t.jpg';
+
+          //if previously image not stored
+          // if(!$infographic->$image_thumb) {
+          // }
+          $infographic->$image_thumb = $image_thumb_name;
+
+          $search_object->$image_thumb_search = $path.$image_thumb_name;
+          // if(!$search_object->$image_thumb_search) {
+          // }
+
+          // remove old image from search and infographics and store the selected file instead
+          $image_thumb_obj->save($path.$image_thumb_name);
+
+        }
+        // return $infographic;
+
+        // if thumb image was selected
         if($request->$image) {
           $path = 'uploads/infographics/'.$lang."/";
 
-          $request->validate([
+          $this->validate($request, [
             $image => 'mimes:jpg,png,jpeg',
           ]);
 
           // make image
-          $image = Image::make($request->$image);
-          $image_thumb = Image::make($request->$image_thumb);
+          $image_obj = Image::make($request->$image);
 
 
           //image names i.e. (image and image_thumb)
-          $image_name = $id.'.'.$request->$image->getClientOriginalExtension();
-          $image_thumb_name = $id.'_t.'.$request->$image_thumb->getClientOriginalExtension();
+          $image_name = $id.'.jpg';
 
           //if previously image not stored
-          if(!$info->$image_thumb) {
-            $info->$image = $image_name;   
-          }
+          $infographic->$image = $image_name;
+          // if(!$infographic->$image) {
+          // }
 
           // remove old image from search and infographics and store the selected file instead
-          $image->save($path.$image_name);
+          $image_obj->save($path.$image_name);
 
         }
 
-        // if thumb image was selected
-        if($request->$image_thumb) {
-          // //same path for infographic and search
-          // //no need to to remove it from infographic as well
-          // File::delete($search_object->image_thumb);
-          // // $image = Image::make($request->fimage_thumb);
-          // print_r($request->file(''));exit;
-
-          // return $search_object->id;
-
+        // store search table data
+        if($infographic->save()) {
+          $search_object->$title = $request->$title;
+          if($lang!='en'){
+            $search_object->date_pa = $request->$date;
+            $search_object->date_dr = $request->$date;
+          }
+          else{
+            $search_object->date_en = $request->$date;
+          }
+          $search_object->save();
         }
-        $info->save();
-        return $infographic;
-      }
 
+        $log = new Log();
 
-      return $request->all();
-       
+        $log->table_name = 'infographics';
+        $log->table_item_id = $id;
+        $log->activity = 'update';
+        $log->user_id = Auth::user()->id;
+        $log->save();
 
-        
-
-        // // info graphics data storage
-        //  $info = InfoGraphic::findOrFail($id);
-         
-        //  $search_obj = Search::where('table_name','=','infographics')->where('table_id','=',$id)->first();
-
-        //  $info->$title = $request->$title;
-         
-        //  if($lang!='en') {
-        //    $info->date_pa = $request->$date;
-        //    $info->date_dr = $request->$date;
-        //  }
-        //  else{
-        //    $info->date_en = $request->$date;
-        //  }
-
-        //   // if($request->$img!=null || $request->$img_thumb!=null) {
-        //     //construct image path
-        //      $image_path = 'uploads/infographics/'.$lang.'/';
-            
-        //      if($request->$img_thumb!=null){
-        //         // validation
-        //         $this->validate($request,[
-        //           $img_thumb=>'required|mimes:jpg,jpeg,png,svg,bmp',
-        //         ]);
-                
-        //         if($search_obj!=''){
-        //           if(file_exists($search_obj->image_thumb)){
-        //             //remove existing images
-        //             File::delete($search_obj->image_thumb);
-        //           }
-        //           // else{ 
-        //           // }
-        //         }
-
-        //         $image_thumb = Image::make($request->$img_thumb);
-        //         $image_thumb_name = $id.'_t.'.$request->$img_thumb->getClientOriginalExtension();
-        //         $image_thumb->save($image_path.$image_thumb_name);
-        //         $info->$img_thumb = $image_thumb_name;
-        //       }
-
-        //       if($request->$img != null) {
-
-        //       }
-
-        //       if($search_obj!=''){
-        //           if(file_exists($search_obj->image_thumb)){
-        //             //remove existing images
-        //             File::delete(str_replace('_t','',$search_obj->image_thumb));
-        //           }
-        //       }
-
-        //       //get the Image
-        //       print_r($request->file());exit;
-        //       $image = Image::make($request->$img);
-              
-        //       //set new images name
-        //       $image_name = $id.'.'.$request->$img->getClientOriginalExtension();
-
-        //       $image->save($image_path.$image_name);
-
-        //       //store in db
-        //       $info->$img = $image_name;
-        //   //  }
-
-        //    if($info->save()) {
-        //        $search_obj->$title = $request->$title;
-        //        if($lang!='en'){
-        //           $search_obj->date_pa = $request->$date;
-        //           $search_obj->date_dr = $request->$date;
-        //        }
-        //        else{
-        //         $search_obj->date_en = $request->$date;
-        //        }
-        //        $search_obj->save();
-        //      }
-
-        //     $log = new Log();
-
-        //     $log->table_name = 'infographics';
-        //     $log->table_item_id = $id;
-        //     $log->activity = 'update';
-        //     $log->user_id = Auth::user()->id;
-        //     $log->save();
-
-        //      // Log::info($id." $info->type updated by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
-        //      return Redirect()->route('infographic.index');
+        // Log::info($id." $info->type updated by ".Session::get('email')." on ".date('l jS \of F Y h:i:s A'));
+        return Redirect()->route('infographic.index');
     }
 
     /**
@@ -382,7 +328,7 @@ class InfoGraphicController extends Controller
         File::delete('uploads/infographics/en/'.$info->image_thumb_en);
         File::delete('uploads/infographics/dr/'.$info->image_thumb_dr);
         File::delete('uploads/infographics/pa/'.$info->image_thumb_pa);
-        
+
         $search = Search::where('table_name','infographics')->where('table_id',$id);
         $search->delete();
         $info->delete();
