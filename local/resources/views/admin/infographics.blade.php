@@ -10,7 +10,7 @@ else{
 $title = "title_".$lang;
 $date = "date_".$lang;
 $short_desc = "short_desc_".$lang;
-$img = "image_".$lang;
+$img = "image_thumb_".$lang;
 if($lang=='en'){
   $dir = 'left';
   $direction = 'ltr';

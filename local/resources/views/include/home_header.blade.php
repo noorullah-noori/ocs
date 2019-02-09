@@ -850,15 +850,16 @@
   }
 }
 
- body a:hover,body a.title_font:hover,.ui[class*="right floated"].header:hover{
-    color:rgb(97, 92, 150) !important;
-  }
+
   .description ol li{
     direction: {{$rtl}} !important;
     text-align: {{$dir}} !important;
   }
   .ui.breadcrumb {
     text-align: {{$dir}} !important;
+  }
+  body a:hover,body a.title_font:hover,.ui[class*="right floated"].header:hover{
+    color:rgb(97, 92, 150) !important;
   }
 
   </style>
@@ -1089,7 +1090,7 @@
   <div class="ui grid not-printable" id="search_box" style="padding-bottom:0px;display:none;">
     <div class="column" style="background-color:#2c2b4a;padding:5px 14px !important;margin-top:14px;">
       <div class="ui container" style="width:57%;padding-left:10px;">
-        <form class="ui form" action="{{url($lang.'/search_result')}}" name="search_form">
+        <form class="ui form" action="{{url($lang.'/simple_search_result')}}" name="search_form">
           <div class="field" style="display: inline;float: {{$dir}};width: 76%">
             <div class="ui icon input">
               <input class="prompt body_font" style="direction:ltr;" name="search" id="search_text" type="text" placeholder="{{trans('home.search')}}">

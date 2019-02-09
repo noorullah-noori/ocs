@@ -23,7 +23,7 @@
   }
   ul li {
     direction: {{$rtl}} !important;
-    margin-{{$dir}}:15px !important;
+    /* margin-{{$dir}}:15px !important; */
     font-family: {{($lang=='en')?'':'aop_font'}} !important;
 	line-height: 1.4em !important;
     font-size: 1.12em;
@@ -839,6 +839,10 @@
     max-width: 100% !important;
   }
 
+  mark {
+    background-color: #e0dfff;
+  }
+
   </style>
   @stack('custom-css')
 </head>
@@ -1067,7 +1071,7 @@
   <div class="ui grid not-printable" id="search_box" style="padding-bottom:0px;display:none;">
     <div class="column" style="background-color:#2c2b4a;padding:5px 14px !important;margin-top:14px;">
       <div class="ui container" style="width:57%;padding-left:10px;">
-        <form class="ui form" action="{{url($lang.'/search_result')}}" method="GET" name="search_form">
+        <form class="ui form" action="{{url($lang.'/simple_search_result')}}" method="GET" name="search_form">
           <div class="field" style="display: inline;float: {{$dir}};width: 76%">
             <div class="ui icon input">
               <input class="prompt body_font" style="direction:ltr;" name="search" id="search_text" type="text" placeholder="{{trans('home.search')}}">

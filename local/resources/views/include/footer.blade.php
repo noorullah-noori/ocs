@@ -193,10 +193,14 @@ use App\Search;
 // menu bar responsiveness script ends
 
 $(document).ready(function() {
-       $(".date_dr").pDatepicker({
-        format : "YYYY - MM - DD"
-      });
-    });
+  $(".date_dr").pDatepicker({
+    format : "YYYY - MM - DD"
+  });
+
+
+
+
+});
 
 
 // language switcher script starts
@@ -312,6 +316,8 @@ $('#mobile_search').click(function() {
     $('#mobile_search_box').css('display','none');
   }
 });
+
+
 </script>
 @stack('custom-js')
 </body>

@@ -1,10 +1,4 @@
-@extends('layouts.master')
-@section('title',trans('menu.ocs'))
-{{-- @section('search_title', 'نتایج جستجو برای کلمه') --}}
-@section('content')
-@php
-@endphp
-  <div class="ui items" style="">
+<div class="ui items" style="">
     @if($data)
       @foreach($data as $value)
         <div class="item {{($value==$data->last())?'no_border':''}}">
@@ -26,20 +20,38 @@
   </div>
     {{-- Pagination start --}}
       <div class="ui centered grid">
-        {{$data->links()}}
+        {!! $data->links() !!}
       </div>
     {{-- Pagination End --}}
-@endsection
-@push('custom-css')
-  <style>
-
-  </style>
-
-@endpush
-
-@push('custom-js')
-  <script>
-
-  </script>
-
-@endpush
+  
+    
+  
+    <script>
+  
+    $('.pagination a').click(function(e) {
+      e.preventDefault();
+  
+      $('li').removeClass('active');
+      $(this).parent('li').addClass('active');
+  
+      var myurl = $(this).attr('href');
+      var page=$(this).attr('href').split('page=')[1];
+  
+      getData(page);
+  
+    });
+  
+    function getData(page) {
+      $.ajax({
+          url: $('form[name=advanced_search_form]').attr('action')+'?page=' + page,
+          data: $('form[name=advanced_search_form]').serialize(),
+          type: "get",
+          datatype: "html"
+      }).done(function(data){
+          $(".search-result").empty().html(data);
+          location.hash = page;
+      }).fail(function(jqXHR, ajaxOptions, thrownError){
+            alert('No response from server');
+      });
+    }
+    </script>

@@ -2,7 +2,7 @@
 @section('title',trans('menu.advanced_search'))
 @section('content')
 
-<form class="ui form" method="GET" action="{{url($lang.'/get_search')}}">
+<form class="ui form" method="GET" name="advanced_search_form" action="{{url($lang.'/get_search')}}">
   <label class="ui header title_font"> : {{trans('search.search')}}</label>
     <div class="field">
       <label>{{trans('search.search')}}*</label>
@@ -11,7 +11,7 @@
 
     <div class="field">
       <label>{{trans('search.search_in')}}</label>
-      <select class="ui fluid dropdown body_font" name="type" id="">
+      <select style="direction:{{$rtl}};" name="type">
         <option value="word" selected style="direction:{{$rtl}};">{{trans('search.exact_word')}}</option>
         <option value="all" style="direction:{{$rtl}};">{{trans('search.all_words')}}</option>
       </select>
@@ -21,11 +21,11 @@
     <div class="two fields" style="direction: {{$rtl}}">
         <div class="field">
           <label>{{trans('search.from')}}</label>
-          <input class="{{$lang=='en' ? '' : 'date_dr' }}" type="{{$lang=='en' ? 'date' : 'text'}}" name="from">
+            <input class="{{$lang=='en' ? '' : 'date_dr' }}" type="{{$lang=='en' ? 'date' : 'text'}}" name="from">
         </div>
         <div class="field">
           <label>{{trans('search.to')}}</label>
-          <input class="{{$lang=='en' ? '' : 'date_dr' }}" type="{{$lang=='en' ? 'date' : 'text'}}" name="to">
+            <input class="{{$lang=='en' ? '' : 'date_dr' }}" type="{{$lang=='en' ? 'date' : 'text'}}" name="to">
         </div>
     </div>
 
@@ -135,6 +135,9 @@
             <label>{{trans('menu.videos')}}</label>
           </div>
         </div>
+            {{csrf_field()}}
+
+        <button class="ui button" type="submit">{{trans('search.search')}}</button>
       </div>
     </div>
 
@@ -252,6 +255,10 @@
     {{csrf_field()}}
   <button class="ui button" type="submit">{{trans('search.search')}}</button>
 </form> --}}
+
+  <div class="search-result">
+
+  </div>
 @endsection
 @push('custom-css')
   <style>
@@ -301,7 +308,23 @@
         return false;
       }
     });
+
+    $("form[name=advanced_search_form]").submit(function(event) {
+      event.preventDefault();
+      $.ajax({
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: $(this).serialize(),
+        success: function (resp) {
+          $('.search-result').html("<hr>"+resp);
+
+          
+        }
+
+      })
+    });
   });
+
 
   </script>
 
