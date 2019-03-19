@@ -6,7 +6,7 @@ return
 	'title'=>'OCS | Home',
 
 	//other pages title
-	'ocs_title'=>' | Office of Chief of Staff for the President',
+	'ocs_title'=>' | Office of Chief of Staff to the President',
 
 	'description'=>'The Office of Chief of Staff to the President, is the working office of the President which is the basic reference for the administration execution of the authorities and duties of the president as per stated in the constitution. This office facilitates the implementation of presidential decrees, ordinance, directives and programs of the president in various fields and provide the government high officials relations with the president.',
 	'keywords'=>'AOP, administrative, office, president, official, website, kabul, afghanistan, goverment',

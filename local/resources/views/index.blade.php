@@ -19,7 +19,7 @@
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
 {{-- <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" /> --}}
 {{-- favicon dem --}}
-  <title>Office of Chief Of Staff for the President</title>
+  <title>Office of Chief of Staff to the President</title>
   <style>
       @font-face {
         font-family: 'aop_font';
@@ -204,7 +204,7 @@
       </div>
     </div>
     <div class="second-top-bar">
-      <p id="js-rotating" class="body_font">ریاست عمومی دفتر مقام عالی ریاست جمهوری , د جمهوري‌ ریاست د عالي مقام دفتر لوی ریاست, Office of Chief of Staff for the President</p>
+      <p id="js-rotating" class="body_font">ریاست عمومی دفتر مقام عالی ریاست جمهوری , د جمهوري رياست لوړ مقام دفتر لوی رياست, Office of Chief of Staff to the President</p>
     </div>
     <div class="middle-bar">
       <div class="president">
