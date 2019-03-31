@@ -54,6 +54,11 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'{lang?}','where' => ['lang' => 'dr|pa|en']], function() {
+// Route::get('/', function() {
+// 	$lang = Config::get('app.locale');
+// 	return redirect($lang.'/home');
+
+// });
 
 Route::get('advance_search',function() {
 	$lang = Config::get('app.locale');
@@ -70,6 +75,7 @@ Route::get('home',function() {
 	$videos = Video::take('2')->whereNotNull('title_'.$lang)->orderBy('date_'.$lang,'desc')->get();
 	$documents = Document::take('4')->whereNotNull('title_'.$lang)->orderBy('date_'.$lang,'desc')->get();
 	$words = DB::table('president')->where('type','word')->orderBy('id','desc')->first();
+	// return dd($words->image);
 	//dd($words);exit;
   return view('home')->with(['news'=>$news,'word'=>$words,'articles'=>$articles,'videos'=>$videos,'documents'=>$documents,'lattest_news'=>$lattest_news]);
 })->name('home');

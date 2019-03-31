@@ -90,6 +90,7 @@ class DocumentsController extends Controller
           //make image path
           $path = 'uploads/'.$documents.'/';
           
+          
 
           if($request->$pdf!='') {
               //pdf name
@@ -98,6 +99,7 @@ class DocumentsController extends Controller
 
               //store pdf in storage
               $request->$pdf->move($path,$pdf_name);
+              // return $request->$pdf;
 
               //db pdf storage
               $document->$pdf = $pdf_name;
@@ -195,7 +197,7 @@ class DocumentsController extends Controller
                $pdf =>'mimes:pdf,xlsx,doc,docx',
               ]);
              //remove existing pdf
-             File::delete($search_obj->image_thumb);
+            //  File::delete($search_obj->image_thumb);
 
              //set new pdf name
              $pdf_name = $id.'.'.$request->$pdf->getClientOriginalExtension();

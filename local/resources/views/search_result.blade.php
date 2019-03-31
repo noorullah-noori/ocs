@@ -6,6 +6,7 @@
             <a href="{{($value->type=='word')?'#':url($lang.'/'.$value->type.'_details/'.$value->table_id)}}" class="ui small header title_font">{{($value->type=='word')?trans('home.president_word'):$value->$title}}</a>
             <div class="meta body_font">
               {{$value->$date}}
+              -- {{$value->type}}
               {{-- <span dir="">{{$jdate->detailedDate($value->date_en,$lang)}}</span> --}}
             </div>
             <div class=" description body_font ">
@@ -13,6 +14,7 @@
             </div>
           </div>
         </div>
+        
       @endforeach
     @else
       <center><h2 style="">No match Found</h2></center>

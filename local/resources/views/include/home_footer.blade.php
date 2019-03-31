@@ -37,7 +37,7 @@ use App\Search;
       </div>
     </div>
     <div class="column" id="footer_news">
-      <a href="{{url($lang.'/news')}}" class="ui header title_font footer_title" style="">{{trans('home.latest_news')}}</a>
+      <a href="{{url($lang.'/lattest_news')}}" class="ui header title_font footer_title" style="">{{trans('home.latest_news')}}</a>
       @if ($news)
         @foreach($news as $item)
           @if ($item->$title!=null)
@@ -70,7 +70,7 @@ use App\Search;
     <div class="sixteen wide tablet mobile four wide computer column" style="text-align:{{$indir}}">
 		<a href="http://prev.ocs.gov.af" target="_blank" style="color:blue;">{{trans('home.old_website')}}</a></div>
     <div class="sixteen wide tablet mobile six wide computer column" style="">
-      <p style="margin-left:auto;margin-right:auto;text-align:center;direction:ltr"><i class="copyright icon"></i>Office of Chief Of Staff for the President. All Rights Reserved</p>
+      <p style="margin-left:auto;margin-right:auto;text-align:center;direction:ltr"><i class="copyright icon"></i>Office of Chief To Staff for the President. All Rights Reserved</p>
     </div>
     <div class="sixteen wide tablet mobile six wide computer column">
       <div class="ui centered grid" style="" id="footer_social_buttons">

@@ -1,6 +1,6 @@
 <!-- //calendar -->
   <style>
-  body *{
+  body {{$lang == 'en' ? '*' : ''}}{
     direction:{{$ltr}};
     text-align:{{$dir}};
     text-transform: none;

@@ -74,7 +74,6 @@ class SearchController extends Controller
 
       }
       else {
-
         $data = Search::whereIn('type', $search_in)
                       ->whereRaw("($title LIKE '%$search%' OR $short_desc LIKE '%$search%' OR $description LIKE '%$search%' )")
                       ->whereBetween($date,[$from,$to])
